@@ -3,6 +3,16 @@ title: "Vectors & Parametric Equations"
 date: 2026-02-10
 ---
 
+::: {.callout-tip collapse="true"}
+## Real-World Connection: GPS and Linear Combinations
+
+Your phone's GPS uses linear combinations constantly! When calculating your position, it takes signals from multiple satellites and combines them with different weights to pinpoint your location.
+
+In animation and gaming, characters move smoothly because their positions are calculated as weighted combinations of keyframe positions — exactly what we're learning today!
+
+This concept (linear combinations) is also the foundation of **machine learning** and **AI**. Neural networks are essentially very complicated linear combinations!
+:::
+
 ## Topics Covered
 
 - Trisecting points on a line segment
@@ -10,6 +20,20 @@ date: 2026-02-10
 - Vector notation: $\vec{AP} = \lambda \cdot \vec{AB}$
 - Parametric equations of a line
 - Extension to 3D
+
+::: {.callout-note collapse="true"}
+## What's a weighted average?
+
+A regular average treats everything equally:
+$$\text{Average of 3 and 9} = \frac{3 + 9}{2} = 6$$
+
+A **weighted** average gives more importance to one side:
+
+- "75% of the way from 3 to 9" = $0.25 \times 3 + 0.75 \times 9 = 7.5$
+- "33% of the way from 3 to 9" = $0.67 \times 3 + 0.33 \times 9 = 5.0$
+
+The weights always add up to 1 (100%). This works for coordinates too!
+:::
 
 ## Lecture Video
 
@@ -34,6 +58,8 @@ date: 2026-02-10
 Given endpoints $A$ and $B$, any point $P$ on line $AB$ can be written:
 
 $$P = \lambda B + (1 - \lambda) A$$
+
+Think of $\lambda$ as a **progress bar** from $A$ to $B$.
 
 - $\lambda = 0$: at point $A$
 - $\lambda = 1$: at point $B$
@@ -75,6 +101,18 @@ $$T_2 = \frac{1}{3}A + \frac{2}{3}B = (7, \tfrac{19}{3})$$
 </script>
 ```
 
+::: {.callout-note collapse="true"}
+## Vocabulary: Parametric Equation
+
+Instead of writing $y$ in terms of $x$ (like $y = 2x + 1$), we write **both** $x$ and $y$ in terms of a third variable $\lambda$ (the "parameter"):
+
+$$x = x_A + \lambda(x_B - x_A), \quad y = y_A + \lambda(y_B - y_A)$$
+
+Think of $\lambda$ as **time**. As time goes from 0 to 1, the point travels from $A$ to $B$.
+
+**Why is this useful?** It works in ANY number of dimensions! The slope formula only works in 2D, but parametric equations work in 2D, 3D, 4D, or any dimension.
+:::
+
 ## Parametric Equations
 
 The parametric form of a line through $A(x_A, y_A)$ and $B(x_B, y_B)$:
@@ -100,14 +138,16 @@ $$\vec{AQ} = -\frac{1}{3}\vec{AB}$$
 
 $$Q = A - \frac{1}{3}(B - A) = (1, \tfrac{40}{3})$$
 
-## Key Formulas
+## Cheat Sheet
 
 ::: {.key-formula}
 | Concept | Formula |
 |---|---|
-| Linear combination | $P = \lambda B + (1-\lambda)A$ |
-| Midpoint | $M = \frac{1}{2}(A + B)$ |
-| Trisector (near $A$) | $T = \frac{2}{3}A + \frac{1}{3}B$ |
-| Vector form | $\vec{AP} = \lambda \cdot \vec{AB}$ |
-| Parametric line | $x = x_A + \lambda \Delta x$, etc. |
+| Point as weighted average | $P = (1-\lambda)A + \lambda B$ |
+| Midpoint ($\lambda = 1/2$) | $M = \frac{1}{2}(A + B)$ |
+| Trisector near $A$ ($\lambda = 1/3$) | $T = \frac{2}{3}A + \frac{1}{3}B$ |
+| Interior point | $0 < \lambda < 1$ |
+| Exterior point | $\lambda < 0$ or $\lambda > 1$ |
+
+**Remember:** The weight closer to a point means you're giving MORE weight to that point. It's like a tug-of-war: the stronger pull wins!
 :::

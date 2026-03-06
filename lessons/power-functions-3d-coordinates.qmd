@@ -3,6 +3,19 @@ title: "Power Functions & 3D Coordinates"
 date: 2026-02-09
 ---
 
+::: {.callout-tip collapse="true"}
+## Real-World Connection: Powers in Nature
+
+Different powers appear in different physical laws:
+
+- $x^1$ (linear): Constant speed motion — distance grows linearly with time
+- $x^2$ (quadratic): Falling objects — distance grows with time *squared*
+- $x^3$ (cubic): Volume — double a cube's side length, volume becomes $8\times$ ($2^3$)
+- $x^{1/2}$ (square root): Earthquake magnitude — energy grows exponentially
+- $x^{-1}$ (reciprocal): Sound — loudness decreases as $\frac{1}{\text{distance}}$
+- $x^{-2}$ (inverse square): Gravity! Newton's law says gravitational force decreases as $\frac{1}{r^2}$
+:::
+
 ## Topics Covered
 
 - Power functions $y = x^k$ for various $k$
@@ -29,6 +42,20 @@ date: 2026-02-09
 
 ![t = 27:20](../images/2026-02-09/frame_04_27m20s.jpg)
 
+::: {.callout-note collapse="true"}
+## What does the exponent $k$ do?
+
+Think of $k$ as a "personality dial":
+
+- $k = 1$: boring straight line
+- $k > 1$: curve bends UP (grows faster than linear)
+- $0 < k < 1$: curve bends DOWN (grows slower than linear, like a root)
+- $k = 0$: flat line at $y = 1$ (everything to the zero power is 1)
+- $k < 0$: curve goes toward infinity near zero and toward zero far away
+
+**Magic point:** ALL power functions pass through $(1, 1)$ because $1^k = 1$ for any $k$!
+:::
+
 ## Family of Power Functions
 
 All power functions $y = x^k$ pass through $(1, 1)$ and (for $k \neq 0$) through $(0, 0)$.
@@ -54,6 +81,15 @@ All power functions $y = x^k$ pass through $(1, 1)$ and (for $k \neq 0$) through
 </script>
 ```
 
+::: {.callout-tip collapse="true"}
+## Quick test for even/odd functions
+
+Plug in $-x$ and see what happens:
+
+- **Even function:** $f(-x) = f(x)$ → symmetric about y-axis (mirror left/right). Examples: $x^2$, $x^4$
+- **Odd function:** $f(-x) = -f(x)$ → symmetric about origin (rotate 180 degrees). Examples: $x$, $x^3$, $1/x$
+:::
+
 ## Even vs Odd for fractional exponents
 
 For $y = x^{p/q}$ (in lowest terms):
@@ -67,6 +103,20 @@ For $y = x^{p/q}$ (in lowest terms):
 **Example:** $x^{7.4} = x^{37/5}$ — both 37 and 5 are odd → **odd function**
 
 **Example:** $x^{7.2} = x^{36/5}$ — 36 is even → **even function**
+
+::: {.callout-note collapse="true"}
+## Vocabulary: Inverse Function
+
+If a function $f$ turns input $x$ into output $y$, the inverse function $f^{-1}$ turns $y$ back into $x$.
+
+**Example:**
+- $f(x) = x^2$ squares a number: $f(3) = 9$
+- $f^{-1}(x) = \sqrt{x}$ un-squares it: $f^{-1}(9) = 3$
+
+**Graphically:** inverse functions are **mirror images** across the line $y = x$.
+
+Think of it like this: if $(3, 9)$ is on $y = x^2$, then $(9, 3)$ is on $y = \sqrt{x}$ — the coordinates are just swapped!
+:::
 
 ## Inverse Functions
 
@@ -93,9 +143,18 @@ For $y = x^{p/q}$ (in lowest terms):
 </script>
 ```
 
-## Key Formulas
+## Cheat Sheet
 
 ::: {.key-formula}
+| Exponent $k$ | Name | Shape | Key feature |
+|---|---|---|---|
+| $k > 1$ | Power | Curves up steeply | Faster than linear |
+| $0 < k < 1$ | Root | Curves and flattens | Slower than linear |
+| $k = 0$ | Constant | Flat line at $y = 1$ | $x^0 = 1$ always |
+| $k < 0$ | Reciprocal | Asymptotes at axes | Blows up at $x = 0$ |
+
+**Universal point:** All $y = x^k$ pass through $(1, 1)$
+
 | Concept | Result |
 |---|---|
 | $x^0 = 1$ | For all $x \neq 0$ |

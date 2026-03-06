@@ -3,6 +3,14 @@ title: "Quadratic Equations & Graphing"
 date: 2026-01-20
 ---
 
+::: {.callout-tip collapse="true"}
+## Real-World Connection: Math Detectives
+
+Finding an equation from a graph is like being a math detective. You're given clues (intercepts, vertices, special points) and you need to figure out the "formula" that created the pattern.
+
+Scientists do this all the time: they collect data, plot it, and then find the equation that fits. That equation lets them *predict the future* — like predicting where a rocket will land or how a disease will spread.
+:::
+
 ## Topics Covered
 
 - Constructing quadratic equations from graphs
@@ -10,6 +18,14 @@ date: 2026-01-20
 - Using x-intercepts, y-intercepts, and symmetry
 - Extension to cubic polynomials
 - Signs of coefficients $a$, $b$, $c$
+
+::: {.callout-note collapse="true"}
+## Vocabulary: Root / Zero / x-intercept
+
+These all mean the same thing: a value of $x$ where $y = 0$ (the graph touches or crosses the x-axis).
+
+For $y = (x-3)(x+1)$, the roots are $x = 3$ and $x = -1$.
+:::
 
 ## Lecture Video
 
@@ -30,6 +46,16 @@ date: 2026-01-20
 ![t = 20:40](../images/2026-01-20/frame_04_20m40s.jpg)
 
 ## Two Major Forms
+
+::: {.callout-note collapse="true"}
+## Why does factored form work?
+
+If $x = r_1$, the first parenthesis becomes zero, making the whole thing zero — the point is on the x-axis!
+
+**Example:** Roots at $x = -2$ and $x = 3$:
+$y = k(x + 2)(x - 3)$
+Plug in $x = -2$: $y = k(0)(-5) = 0$ — on the x-axis!
+:::
 
 | Form | Expression | Best when you know... |
 |---|---|---|
@@ -65,6 +91,14 @@ date: 2026-01-20
 </script>
 ```
 
+::: {.callout-tip collapse="true"}
+## The Symmetry Shortcut
+
+When two points have the **same y-value**, they must be mirror images across the axis of symmetry!
+
+AOS = average of their x-values (just the midpoint formula). Think of it like a balance point — the mirror is exactly in the middle.
+:::
+
 ## Example 2: Using symmetry from equal y-values
 
 **Given:** Points $(1, 6)$ and $(-5, 6)$ share the same $y$-value, plus $(0, -1)$
@@ -74,6 +108,20 @@ date: 2026-01-20
 3. Plug in $(0, -1)$: $-1 = k(0-1)(0+5) + 6 \Rightarrow k = \frac{7}{5}$
 
 **Key insight:** Points with equal y-values reveal the axis of symmetry!
+
+::: {.callout-note collapse="true"}
+## What changes with cubics?
+
+| Feature | Quadratic ($x^2$) | Cubic ($x^3$) |
+|---|---|---|
+| Highest power | 2 | 3 |
+| Shape | U or upside-down U | S-curve |
+| Max roots | 2 | 3 |
+| End behavior | Same direction both sides | Opposite directions |
+| Max turning points | 1 | 2 |
+
+The key insight: **odd powers** go in opposite directions at the extremes, **even powers** go in the same direction.
+:::
 
 ## Example 3: Extension to cubic polynomials
 
@@ -107,9 +155,16 @@ Given a graph of $y = ax^2 + bx + c$:
 - **$b$**: use AOS formula $x = -\frac{b}{2a}$
   - If AOS is positive and $a < 0$: then $b > 0$ (two negatives cancel)
 
-## Key Formulas
+## Cheat Sheet
 
 ::: {.key-formula}
+### How to find an equation from a graph:
+
+1. **Know the roots?** → Use factored form $y = k(x - r_1)(x - r_2)$
+2. **Know the vertex?** → Use vertex form $y = a(x - h)^2 + k$
+3. **Two points with same y?** → Their midpoint = axis of symmetry
+4. **Always:** use one extra point to solve for the unknown coefficient $k$
+
 | Concept | Formula |
 |---|---|
 | Factored form | $y = k(x - r_1)(x - r_2)$ |

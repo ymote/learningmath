@@ -3,6 +3,17 @@ title: "Rational Functions & Asymptotes"
 date: 2026-01-27
 ---
 
+::: {.callout-tip collapse="true"}
+## Real-World Connection: Asymptotes Everywhere
+
+Asymptotes appear everywhere:
+
+- **Speed of light**: as you add energy to accelerate a particle, its speed approaches but never reaches the speed of light
+- **Medicine**: drug concentration in blood rises quickly then approaches a maximum level asymptotically
+- **Economics**: diminishing returns — the 100th employee doesn't help as much as the 1st
+- **Phone battery**: charging slows down as it approaches 100%
+:::
+
 ## Topics Covered
 
 - Leading coefficient and end behavior of polynomials
@@ -29,6 +40,29 @@ date: 2026-01-27
 ![t = 36:30](../images/2026-01-27/frame_03_36m30s.jpg)
 
 ![t = 37:00](../images/2026-01-27/frame_04_37m00s.jpg)
+
+::: {.callout-note collapse="true"}
+## What is a rational function?
+
+You already know polynomials like $y = x^2 - 3x + 2$.
+
+A **rational function** is just one polynomial divided by another:
+
+$$R(x) = \frac{\text{numerator polynomial}}{\text{denominator polynomial}} = \frac{P(x)}{Q(x)}$$
+
+The key difference: the denominator can be **zero**, which makes the function **undefined** at those points!
+:::
+
+::: {.callout-note collapse="true"}
+## Vocabulary: Asymptote
+
+A line that a graph gets closer and closer to but **never actually touches**.
+
+Imagine walking toward a wall, but each step you take is half the remaining distance. You get closer and closer but technically never reach it. That wall is your asymptote!
+
+- **Vertical asymptote**: a vertical line the graph approaches (function blows up to infinity)
+- **Horizontal asymptote**: a horizontal line the graph approaches as $x \to \pm\infty$
+:::
 
 ## Three Types of Undefined Operations
 
@@ -64,6 +98,14 @@ date: 2026-01-27
 </script>
 ```
 
+::: {.callout-tip collapse="true"}
+## The Degree Test (why it works)
+
+When $x$ is huge, only the highest power matters. Everything else is peanuts!
+
+Example: $\frac{3x^5 + 2x}{x^3 - 1}$ — for huge $x$, this is basically $\frac{3x^5}{x^3} = 3x^2 \to \infty$ (top-heavy)
+:::
+
 ## Asymptotic Behavior
 
 For $R(x) = \frac{P(x)}{Q(x)}$, compare degrees:
@@ -77,6 +119,14 @@ For $R(x) = \frac{P(x)}{Q(x)}$, compare degrees:
 ### Sign at infinity
 
 Count the number of negative factors (including leading coefficient). Even/odd power roots don't change the sign analysis — just count negatives!
+
+::: {.callout-note collapse="true"}
+## A Preview: Imaginary Numbers
+
+The rule "cannot take even root of a negative" can actually be broken! In advanced math, we define $i = \sqrt{-1}$ (the "imaginary unit"). Then $\sqrt{-4} = 2i$.
+
+Despite the name "imaginary," these numbers are used in real engineering — electrical circuits, quantum physics, and signal processing.
+:::
 
 ## Behavior near vertical asymptotes
 
@@ -103,13 +153,20 @@ At a vertical asymptote $x = r$ from factor $(x - r)^n$ in denominator:
 </script>
 ```
 
-## Key Formulas
+## Cheat Sheet
 
 ::: {.key-formula}
-| Concept | Formula |
+| Question | Answer |
 |---|---|
-| Vertical asymptote | Zeros of denominator $Q(x) = 0$ |
-| Sign at infinity | Count negative factors at $x \to +\infty$ |
-| Odd root: sign changes | Even root: sign preserved |
-| Double root | Graph touches axis but doesn't cross |
+| Where are vertical asymptotes? | Set denominator = 0, solve for $x$ |
+| Function goes to $+\infty$ or $-\infty$ near asymptote? | Check sign on each side |
+| What happens as $x \to \pm\infty$? | Compare degrees (top-heavy / bottom-heavy) |
+| Odd power root | Function changes sign (crosses) |
+| Even power root | Function bounces (same sign both sides) |
+
+### Three Things You Can NEVER Do
+
+1. **Divide by zero** → vertical asymptote
+2. **Even root of negative** → restricts domain
+3. **Log of non-positive** → restricts domain
 :::

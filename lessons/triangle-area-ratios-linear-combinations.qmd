@@ -3,6 +3,14 @@ title: "Triangle Area Ratios & Linear Combinations"
 date: 2026-02-16
 ---
 
+::: {.callout-tip collapse="true"}
+## Real-World Connection: Triangles in Computer Graphics
+
+Every 3D model in video games and movies is made of tiny triangles! When a game renders a character's face, it calculates the color of each pixel by taking a weighted average of the colors at the triangle's corners.
+
+This is called **barycentric interpolation** — exactly what we're learning today. Every frame of every 3D game uses this math billions of times per second!
+:::
+
 ## Topics Covered
 
 - Barycentric coordinates of a triangle
@@ -10,6 +18,19 @@ date: 2026-02-16
 - Interior, exterior, and boundary points
 - Three types of regions around a triangle
 - Proof: segment ratios = area ratios
+
+::: {.callout-note collapse="true"}
+## Review: Points on a line (2 endpoints)
+
+On a line between $A$ and $B$:
+$$P = \alpha \cdot A + \beta \cdot B \quad\text{where}\quad \alpha + \beta = 1$$
+
+- Both weights positive → $P$ is between $A$ and $B$
+- One weight negative → $P$ is outside the segment
+- Weights proportional to opposite distances (closer → more weight)
+
+Now we extend this from 2 points to 3!
+:::
 
 ## Lecture Video
 
@@ -34,6 +55,22 @@ date: 2026-02-16
 For any point $P$ in the plane with triangle $ABC$:
 
 $$P = \frac{\Delta_A}{\Delta} \cdot A + \frac{\Delta_B}{\Delta} \cdot B + \frac{\Delta_C}{\Delta} \cdot C$$
+
+::: {.callout-tip collapse="true"}
+## Why areas?
+
+On a line, the weight was related to **distance** (1D measurement).
+
+In a triangle, the weight is related to **area** (2D measurement).
+
+The proof uses one beautiful fact:
+
+> If two triangles share the same height, their area ratio equals their base ratio.
+
+$$\frac{\text{Area}(\triangle ACD)}{\text{Area}(\triangle ABD)} = \frac{CD}{BD}$$
+
+because Area = $\frac{1}{2} \times \text{base} \times \text{height}$, and the shared height cancels out!
+:::
 
 where:
 
@@ -85,13 +122,16 @@ $$\frac{[ACD]}{[ABD]} = \frac{\frac{1}{2} \cdot CD \cdot h}{\frac{1}{2} \cdot BD
 
 This is the key insight: **same height → area ratio = base ratio**
 
-## Key Formulas
+## Cheat Sheet
 
 ::: {.key-formula}
 | Concept | Formula |
 |---|---|
-| Barycentric coords | $P = \alpha A + \beta B + \gamma C$, $\alpha+\beta+\gamma=1$ |
-| Interior point | All weights positive |
+| Point in triangle | $P = \alpha A + \beta B + \gamma C$, weights sum to 1 |
+| Weight for vertex $A$ | $\alpha = \frac{\text{Area}(\triangle BPC)}{\text{Area}(\triangle ABC)}$ |
+| Inside triangle | All three weights positive |
+| On an edge | One weight = 0 |
+| At a vertex | One weight = 1, others = 0 |
+| Centroid | All weights = $\frac{1}{3}$ |
 | Area ratio = base ratio | When triangles share same height |
-| Centroid | $G = \frac{1}{3}(A + B + C)$ |
 :::

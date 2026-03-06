@@ -3,6 +3,12 @@ title: "Polynomial Graphing & Transformations"
 date: 2026-02-03
 ---
 
+::: {.callout-tip collapse="true"}
+## Real-World Connection: Pattern Recognition
+
+This kind of skill — matching patterns to models — is exactly what machine learning does! When Netflix recommends a movie or Spotify suggests a song, algorithms are matching patterns in data to known models, just like we're matching graphs to equations.
+:::
+
 ## Topics Covered
 
 - Matching polynomial equations to their graphs
@@ -11,6 +17,15 @@ date: 2026-02-03
 - Polynomial long division
 - The discriminant: $\Delta = b^2 - 4ac$
 - Double roots, triple roots, and graph behavior
+
+## The Detective's Toolkit
+
+When you see a polynomial graph, ask these questions in order:
+
+1. **What happens at the ends?** (Both up? Both down? Opposite?) — This tells you even/odd degree and the sign of the leading coefficient.
+2. **How many times does it turn?** — This bounds the degree (turns $\leq$ degree $- 1$).
+3. **Where does it cross or touch the x-axis?** — These are your roots. Does it cross (odd multiplicity) or bounce (even multiplicity)?
+4. **Where does it cross the y-axis?** — That's the constant term (plug in $x = 0$).
 
 ## Lecture Video
 
@@ -39,9 +54,43 @@ date: 2026-02-03
 | $+x^{\text{odd}}$ | $+\infty$ | $-\infty$ |
 | $-x^{\text{odd}}$ | $-\infty$ | $+\infty$ |
 
+::: {.callout-tip collapse="true"}
+## Quick trick to remember end behavior
+
+Just check what happens when $x \to +\infty$ (far right of graph):
+
+- If the graph goes **UP** on the right → positive leading coefficient
+- If the graph goes **DOWN** on the right → negative leading coefficient
+
+That's it! One glance at the right side tells you the sign.
+:::
+
 **Maximum turning points** = $n - 1$ for degree $n$ polynomial
 
+::: {.callout-note collapse="true"}
+## Turning Points Rule
+
+A polynomial of degree $n$ has **at most** $n - 1$ turning points.
+
+| Degree | Max turns | Like... |
+|---|---|---|
+| 1 (linear) | 0 | A straight line — no turns |
+| 2 (quadratic) | 1 | A U-shape — turns once |
+| 3 (cubic) | 2 | An S-shape — turns twice |
+| 4 (quartic) | 3 | A W-shape — turns three times |
+
+**Key word: AT MOST.** A cubic *can* have 0 turns (like $y = x^3$) but never more than 2.
+:::
+
 ## Example 1: Factor $x^3 - 7x + 6$
+
+::: {.callout-note collapse="true"}
+## What is polynomial long division?
+
+Just like regular long division, but with $x$'s!
+
+If we know one root (say $x = 1$), we can divide by $(x - 1)$ to find the remaining factors. Match the highest power first, subtract, bring down, repeat.
+:::
 
 1. Try $x = 1$: $1 - 7 + 6 = 0$ ✓ → $(x - 1)$ is a factor
 2. Polynomial division: $x^3 - 7x + 6 = (x - 1)(x^2 + x - 6)$
@@ -69,6 +118,12 @@ date: 2026-02-03
 </script>
 ```
 
+::: {.callout-note collapse="true"}
+## Vocabulary: Discriminant
+
+For $ax^2 + bx + c = 0$, the discriminant $\Delta = b^2 - 4ac$ tells you **how many roots** the quadratic has. Think of it as a "reality check" — it tells you whether the parabola actually reaches the x-axis or floats above/below it.
+:::
+
 ## The Discriminant
 
 For $ax^2 + bx + c = 0$:
@@ -82,6 +137,16 @@ $$\Delta = b^2 - 4ac$$
 | $\Delta < 0$ | No real roots (complex) |
 
 > *"This is the most important knowledge point concerning quadratic equations!"*
+
+::: {.callout-tip collapse="true"}
+## Why do roots behave differently?
+
+- **Single root** $(x-r)^1$: the factor changes sign as $x$ crosses $r$, so the graph crosses
+- **Double root** $(x-r)^2$: the factor is always non-negative (a square!), so the graph bounces
+- **Triple root** $(x-r)^3$: odd power, so it crosses — but the flat slope creates an S-shape
+
+The rule: **odd** powers cross, **even** powers bounce.
+:::
 
 ## Root Behavior at x-axis
 
@@ -108,13 +173,15 @@ $$\Delta = b^2 - 4ac$$
 </script>
 ```
 
-## Key Formulas
+## Cheat Sheet
 
 ::: {.key-formula}
-| Concept | Formula |
+| Step | What to check |
 |---|---|
-| Discriminant | $\Delta = b^2 - 4ac$ |
-| Max turning points | $n - 1$ for degree $n$ |
-| Polynomial division | If $f(r) = 0$ then $(x-r)$ is a factor |
-| Factor theorem | $f(x) = (x-r) \cdot q(x)$ |
+| 1 | Even or odd degree? (same ends = even, opposite = odd) |
+| 2 | Positive or negative leading coefficient? (right side up or down?) |
+| 3 | How many turning points? (max = degree - 1) |
+| 4 | What's the y-intercept? (plug in $x = 0$) |
+| 5 | Can you find easy roots? (try $x = 0, \pm 1, \pm 2$...) |
+| 6 | Single, double, or triple roots? (cross, bounce, or flat) |
 :::

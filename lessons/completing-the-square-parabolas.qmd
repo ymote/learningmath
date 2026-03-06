@@ -3,6 +3,19 @@ title: "Completing the Square & Parabolas"
 date: 2026-01-13
 ---
 
+::: {.callout-tip collapse="true"}
+## Why Parabolas Matter
+
+Parabolas are everywhere in real life!
+
+- **Basketball free throw**: the ball follows a parabolic arc
+- **Satellite dishes**: shaped as parabolas to focus signals
+- **Car headlights**: parabolic reflectors focus light into a beam
+- **Bridges**: suspension cables hang in parabolic curves
+
+Every time you throw something in the air, it traces a parabola.
+:::
+
 ## Topics Covered
 
 - Completing the square process
@@ -30,6 +43,32 @@ date: 2026-01-13
 
 ![t = 48:40](../images/2026-01-13/frame_04_48m40s.jpg)
 
+## What You Need to Know First
+
+::: {.callout-note collapse="true"}
+## What is a quadratic equation?
+
+A **quadratic equation** is any equation where the highest power of $x$ is 2.
+
+**General form:** $y = ax^2 + bx + c$
+
+Examples:
+
+- $y = x^2 + 3x + 2$ — quadratic ($x^2$ is highest power)
+- $y = 2x^2 - 5$ — quadratic (no $x$ term, but still has $x^2$)
+- $y = 3x + 1$ — NOT quadratic (highest power is 1, that's *linear*)
+:::
+
+::: {.callout-note collapse="true"}
+## What does graphing a function mean?
+
+A **function** is a rule: you put in an $x$ value, and you get out a $y$ value.
+
+**Graphing** means: plug in many $x$ values, get the $y$ values, plot all the points $(x, y)$, and connect them with a curve.
+
+For $y = x^2$: $x = -2 \Rightarrow y = 4$, $x = 0 \Rightarrow y = 0$, $x = 2 \Rightarrow y = 4$ — connect them and you get a U-shaped curve called a **parabola**!
+:::
+
 ## Key Concepts
 
 ### Completing the Square
@@ -41,7 +80,25 @@ For a quadratic $y = x^2 + ax + b$:
 3. Write as: $\left(x + \frac{a}{2}\right)^2$
 4. Compensate: $y = \left(x + \frac{a}{2}\right)^2 + \left(b - \frac{a^2}{4}\right)$
 
+::: {.callout-note collapse="true"}
+## Vocabulary: Parabola, Vertex, Axis of Symmetry
+
+- **Parabola**: The U-shaped curve from a quadratic. Opens upward (bowl) or downward (umbrella).
+- **Vertex**: The highest or lowest point — where the curve "turns around."
+- **Axis of Symmetry (AOS)**: The vertical line that divides the parabola into two mirror halves. Always passes through the vertex.
+:::
+
 ### Example 1: $y = x^2 - 4x + 5$
+
+::: {.callout-tip collapse="true"}
+## The Big Idea Behind Completing the Square
+
+Remember that $(x - 2)^2 = x^2 - 4x + 4$
+
+Our equation $x^2 - 4x + 5$ is *almost* this! It has the same $x^2 - 4x$ part, just with a different constant.
+
+**The trick:** Force it into $(x - \text{something})^2 + \text{leftover}$ — this tells us exactly where the vertex is!
+:::
 
 $$y = x^2 - 4x + 5 = (x - 2)^2 + 1$$
 
@@ -93,6 +150,12 @@ $$y = -2(x+3)^2 + 18$$
 </script>
 ```
 
+::: {.callout-tip collapse="true"}
+## Why go from graph to equation?
+
+In real life, you often *see* data (a graph, measurements, a trajectory) and need to find the equation that describes it. Scientists do this all the time: collect data, plot it, find the equation. That equation lets you *predict* what happens at values you haven't measured yet.
+:::
+
 ### Example 3: Construct equation from graph
 
 **Given:** Vertex at $(4, -1)$ and a point at $(7, -7)$
@@ -116,13 +179,18 @@ $$y = -2(x+3)^2 + 18$$
 </script>
 ```
 
-## Key Formulas
+## Cheat Sheet
 
 ::: {.key-formula}
-| Formula | Meaning |
+| What you want | What to do |
 |---|---|
-| $y = a(x-h)^2 + k$ | Vertex form; vertex at $(h, k)$ |
-| AOS: $x = -\frac{a}{2}$ | Axis of symmetry (when $y = x^2 + ax + b$) |
-| Vertex $y$-coord: $b - \frac{a^2}{4}$ | Maximum (if $a<0$) or minimum (if $a>0$) |
-| $a > 0$: opens up (minimum) | $a < 0$: opens down (maximum) |
+| Find the vertex | Complete the square → $(x - h)^2 + k$ → vertex is $(h, k)$ |
+| Find AOS | $x = h$ (the x-value of the vertex) |
+| Opens up or down? | $a > 0$ → up (bowl) / $a < 0$ → down (umbrella) |
+| Max or min value? | Up → minimum at $y = k$ / Down → maximum at $y = k$ |
+| Find equation from graph | Vertex → $h, k$ + one point → solve for $a$ |
+
+### The Completing the Square Recipe
+
+$$y = x^2 + ax + b \;\longrightarrow\; y = \left(x + \frac{a}{2}\right)^2 + \left(b - \frac{a^2}{4}\right)$$
 :::
