@@ -13,7 +13,11 @@ date: 2026-02-18
 
 ## Lecture Video
 
-{{< video ../videos/2026-02-18_centroid-median-lines.mp4 >}}
+```{=html}
+<video controls width="100%" preload="metadata">
+  <source src="https://github.com/ymote/learningmath/releases/download/v1.0/2026-02-18_centroid-median-lines.mp4" type="video/mp4">
+</video>
+```
 
 ## Key Video Frames
 

@@ -14,7 +14,11 @@ date: 2026-01-13
 
 ## Lecture Video
 
-{{< video ../videos/2026-01-13_completing-the-square-parabolas.mp4 >}}
+```{=html}
+<video controls width="100%" preload="metadata">
+  <source src="https://github.com/ymote/learningmath/releases/download/v1.0/2026-01-13_completing-the-square-parabolas.mp4" type="video/mp4">
+</video>
+```
 
 ## Key Video Frames
 

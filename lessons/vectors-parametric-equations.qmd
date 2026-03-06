@@ -13,7 +13,11 @@ date: 2026-02-10
 
 ## Lecture Video
 
-{{< video ../videos/2026-02-10_vectors-parametric-equations.mp4 >}}
+```{=html}
+<video controls width="100%" preload="metadata">
+  <source src="https://github.com/ymote/learningmath/releases/download/v1.0/2026-02-10_vectors-parametric-equations.mp4" type="video/mp4">
+</video>
+```
 
 ## Key Video Frames
 

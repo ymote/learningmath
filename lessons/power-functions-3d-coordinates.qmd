@@ -13,7 +13,11 @@ date: 2026-02-09
 
 ## Lecture Video
 
-{{< video ../videos/2026-02-09_power-functions-3d-coordinates.mp4 >}}
+```{=html}
+<video controls width="100%" preload="metadata">
+  <source src="https://github.com/ymote/learningmath/releases/download/v1.0/2026-02-09_power-functions-3d-coordinates.mp4" type="video/mp4">
+</video>
+```
 
 ## Key Video Frames
 
