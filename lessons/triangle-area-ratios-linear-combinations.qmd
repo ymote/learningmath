@@ -3,4 +3,87 @@ title: "Triangle Area Ratios & Linear Combinations"
 date: 2026-02-16
 ---
 
-*Content coming soon — to be converted from notebook.*
+## Topics Covered
+
+- Barycentric coordinates of a triangle
+- Area ratios determine linear combination weights
+- Interior, exterior, and boundary points
+- Three types of regions around a triangle
+- Proof: segment ratios = area ratios
+
+## Key Video Frames
+
+![t = 06:30](../images/2026-02-16/frame_01_06m30s.jpg)
+
+![t = 24:00](../images/2026-02-16/frame_02_24m00s.jpg)
+
+![t = 28:00](../images/2026-02-16/frame_03_28m00s.jpg)
+
+![t = 28:30](../images/2026-02-16/frame_04_28m30s.jpg)
+
+## Point as Weighted Average of Triangle Vertices
+
+For any point $P$ in the plane with triangle $ABC$:
+
+$$P = \frac{\Delta_A}{\Delta} \cdot A + \frac{\Delta_B}{\Delta} \cdot B + \frac{\Delta_C}{\Delta} \cdot C$$
+
+where:
+
+- $\Delta_A$ = area of triangle $BPC$ (opposite vertex $A$)
+- $\Delta_B$ = area of triangle $APC$ (opposite vertex $B$)
+- $\Delta_C$ = area of triangle $APB$ (opposite vertex $C$)
+- $\Delta = \Delta_A + \Delta_B + \Delta_C$ = total area of $ABC$
+
+**Drag point $P$ around the triangle to see the weights change:**
+
+```{=html}
+<div id="calc1" class="desmos-container"></div>
+<script src="https://www.desmos.com/api/v1.9/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6"></script>
+<script>
+  var calc1 = Desmos.GraphingCalculator(document.getElementById('calc1'), {
+    expressions: true,
+    settingsMenu: false
+  });
+  calc1.setExpression({ id: 'A', latex: '(1, 8)', color: '#c74440', pointSize: 12, label: 'A', showLabel: true });
+  calc1.setExpression({ id: 'B', latex: '(7, 2)', color: '#2d70b3', pointSize: 12, label: 'B', showLabel: true });
+  calc1.setExpression({ id: 'C', latex: '(10, 9)', color: '#388c46', pointSize: 12, label: 'C', showLabel: true });
+  calc1.setExpression({ id: 'AB', latex: '((1-t)\\cdot1+t\\cdot7, (1-t)\\cdot8+t\\cdot2)', parametricDomain: {min: 0, max: 1}, color: '#000000' });
+  calc1.setExpression({ id: 'BC', latex: '((1-t)\\cdot7+t\\cdot10, (1-t)\\cdot2+t\\cdot9)', parametricDomain: {min: 0, max: 1}, color: '#000000' });
+  calc1.setExpression({ id: 'CA', latex: '((1-t)\\cdot10+t\\cdot1, (1-t)\\cdot9+t\\cdot8)', parametricDomain: {min: 0, max: 1}, color: '#000000' });
+  calc1.setExpression({ id: 'G', latex: '(6, 6.33)', color: '#fa7e19', pointSize: 14, label: 'Centroid (equal weights)', showLabel: true });
+  calc1.setMathBounds({ left: -1, right: 13, bottom: 0, top: 11 });
+</script>
+```
+
+## Three Types of Regions
+
+The weights $\alpha, \beta, \gamma$ (with $\alpha + \beta + \gamma = 1$) classify the point:
+
+| Region | Weights | Location |
+|---|---|---|
+| **Type 1** (interior) | All positive: $\alpha, \beta, \gamma > 0$ | Inside triangle |
+| **Type 2** (near vertex) | One $> 1$, other two $< 0$ | Beyond one vertex |
+| **Type 3** (near edge) | One $< 0$, other two $> 0$ | Beyond one edge |
+
+## Proof: Segment Ratio = Area Ratio
+
+If $D$ is on segment $BC$, then:
+
+$$\frac{CD}{BD} = \frac{[\triangle ACD]}{[\triangle ABD]}$$
+
+**Why?** Both triangles share the same altitude $h$ from $A$ to line $BC$:
+
+$$\frac{[ACD]}{[ABD]} = \frac{\frac{1}{2} \cdot CD \cdot h}{\frac{1}{2} \cdot BD \cdot h} = \frac{CD}{BD}$$
+
+This is the key insight: **same height → area ratio = base ratio**
+
+## Key Formulas
+
+::: {.key-formula}
+| Concept | Formula |
+|---|---|
+| Barycentric coords | $P = \alpha A + \beta B + \gamma C$, $\alpha+\beta+\gamma=1$ |
+| Interior point | All weights positive |
+| Area ratio = base ratio | When triangles share same height |
+| Centroid | $G = \frac{1}{3}(A + B + C)$ |
+:::

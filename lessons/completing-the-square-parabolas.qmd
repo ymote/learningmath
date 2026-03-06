@@ -12,21 +12,15 @@ date: 2026-01-13
 - Maximum and minimum of quadratic functions
 - Constructing equations from graphs
 
-## Lecture Video
+## Key Video Frames
 
-```{=html}
-<!-- Replace VIDEO_ID with your YouTube video ID, or use a local file -->
-<!-- YouTube example: -->
-<!-- <div class="video-container">
-  <iframe src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0" allowfullscreen></iframe>
-</div> -->
+![t = 35:00](../images/2026-01-13/frame_01_35m00s.jpg)
 
-<!-- Local video example: -->
-<!-- <video controls width="100%">
-  <source src="../videos/2026-01-13.mp4" type="video/mp4">
-</video> -->
-<p><em>Video placeholder — add YouTube URL or local .mp4 file</em></p>
-```
+![t = 42:40](../images/2026-01-13/frame_02_42m40s.jpg)
+
+![t = 47:00](../images/2026-01-13/frame_03_47m00s.jpg)
+
+![t = 48:40](../images/2026-01-13/frame_04_48m40s.jpg)
 
 ## Key Concepts
 

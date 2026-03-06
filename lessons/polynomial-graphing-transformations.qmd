@@ -3,4 +3,110 @@ title: "Polynomial Graphing & Transformations"
 date: 2026-02-03
 ---
 
-*Content coming soon — to be converted from notebook.*
+## Topics Covered
+
+- Matching polynomial equations to their graphs
+- Even vs odd power: end behavior
+- Maximum turning points = degree $- 1$
+- Polynomial long division
+- The discriminant: $\Delta = b^2 - 4ac$
+- Double roots, triple roots, and graph behavior
+
+## Key Video Frames
+
+![t = 01:00](../images/2026-02-03/frame_01_01m00s.jpg)
+
+![t = 19:00](../images/2026-02-03/frame_02_19m00s.jpg)
+
+![t = 20:20](../images/2026-02-03/frame_03_20m20s.jpg)
+
+![t = 34:40](../images/2026-02-03/frame_04_34m40s.jpg)
+
+## End Behavior
+
+| Leading term | $x \to +\infty$ | $x \to -\infty$ |
+|---|---|---|
+| $+x^{\text{even}}$ | $+\infty$ | $+\infty$ |
+| $-x^{\text{even}}$ | $-\infty$ | $-\infty$ |
+| $+x^{\text{odd}}$ | $+\infty$ | $-\infty$ |
+| $-x^{\text{odd}}$ | $-\infty$ | $+\infty$ |
+
+**Maximum turning points** = $n - 1$ for degree $n$ polynomial
+
+## Example 1: Factor $x^3 - 7x + 6$
+
+1. Try $x = 1$: $1 - 7 + 6 = 0$ ✓ → $(x - 1)$ is a factor
+2. Polynomial division: $x^3 - 7x + 6 = (x - 1)(x^2 + x - 6)$
+3. Factor quadratic: $(x^2 + x - 6) = (x - 2)(x + 3)$
+4. **Result:** $(x - 1)(x - 2)(x + 3)$, roots at $x = 1, 2, -3$
+
+**Explore — change the roots and leading coefficient:**
+
+```{=html}
+<div id="calc1" class="desmos-container"></div>
+<script src="https://www.desmos.com/api/v1.9/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6"></script>
+<script>
+  var calc1 = Desmos.GraphingCalculator(document.getElementById('calc1'), {
+    expressions: true,
+    settingsMenu: false
+  });
+  calc1.setExpression({ id: 'r1', latex: 'a=-3', sliderBounds: {min: -5, max: 5, step: 0.1} });
+  calc1.setExpression({ id: 'r2', latex: 'b=1', sliderBounds: {min: -5, max: 5, step: 0.1} });
+  calc1.setExpression({ id: 'r3', latex: 'c=2', sliderBounds: {min: -5, max: 5, step: 0.1} });
+  calc1.setExpression({ id: 'cubic', latex: 'y=(x-a)(x-b)(x-c)', color: '#2d70b3' });
+  calc1.setExpression({ id: 'p1', latex: '(a, 0)', color: '#c74440', pointSize: 10 });
+  calc1.setExpression({ id: 'p2', latex: '(b, 0)', color: '#c74440', pointSize: 10 });
+  calc1.setExpression({ id: 'p3', latex: '(c, 0)', color: '#c74440', pointSize: 10 });
+  calc1.setMathBounds({ left: -6, right: 6, bottom: -15, top: 15 });
+</script>
+```
+
+## The Discriminant
+
+For $ax^2 + bx + c = 0$:
+
+$$\Delta = b^2 - 4ac$$
+
+| $\Delta$ | Roots |
+|---|---|
+| $\Delta > 0$ | Two distinct real roots |
+| $\Delta = 0$ | One repeated (double) root |
+| $\Delta < 0$ | No real roots (complex) |
+
+> *"This is the most important knowledge point concerning quadratic equations!"*
+
+## Root Behavior at x-axis
+
+- **Single root** $(x - r)^1$: graph **crosses** x-axis
+- **Double root** $(x - r)^2$: graph **touches** and bounces back
+- **Triple root** $(x - r)^3$: graph crosses with a **flat inflection**
+
+**See all three behaviors — single root at $a$, double root at $b$, triple root at $c$:**
+
+```{=html}
+<div id="calc2" class="desmos-container"></div>
+<script>
+  var calc2 = Desmos.GraphingCalculator(document.getElementById('calc2'), {
+    expressions: true,
+    settingsMenu: false
+  });
+  calc2.setExpression({ id: 'single', latex: 'y=(x+3)', color: '#2d70b3', lineWidth: 2 });
+  calc2.setExpression({ id: 'double', latex: 'y=(x-1)^2-1', color: '#c74440', lineWidth: 2 });
+  calc2.setExpression({ id: 'triple', latex: 'y=0.5(x-4)^3', color: '#388c46', lineWidth: 2 });
+  calc2.setExpression({ id: 'note1', latex: '(-3, 0)', color: '#2d70b3', pointSize: 10, label: 'crosses (single)', showLabel: true });
+  calc2.setExpression({ id: 'note2', latex: '(1, -1)', color: '#c74440', pointSize: 10, label: 'bounces (double)', showLabel: true });
+  calc2.setExpression({ id: 'note3', latex: '(4, 0)', color: '#388c46', pointSize: 10, label: 'flat crossing (triple)', showLabel: true });
+  calc2.setMathBounds({ left: -6, right: 8, bottom: -5, top: 5 });
+</script>
+```
+
+## Key Formulas
+
+::: {.key-formula}
+| Concept | Formula |
+|---|---|
+| Discriminant | $\Delta = b^2 - 4ac$ |
+| Max turning points | $n - 1$ for degree $n$ |
+| Polynomial division | If $f(r) = 0$ then $(x-r)$ is a factor |
+| Factor theorem | $f(x) = (x-r) \cdot q(x)$ |
+:::

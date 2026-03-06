@@ -3,4 +3,105 @@ title: "Rational Functions & Asymptotes"
 date: 2026-01-27
 ---
 
-*Content coming soon — to be converted from notebook.*
+## Topics Covered
+
+- Leading coefficient and end behavior of polynomials
+- Rational functions: $R(x) = \frac{P(x)}{Q(x)}$
+- Vertical asymptotes (division by zero)
+- Horizontal asymptotes (degree comparison)
+- Three types of undefined operations
+- Graphing rational functions
+
+## Key Video Frames
+
+![t = 22:00](../images/2026-01-27/frame_01_22m00s.jpg)
+
+![t = 35:30](../images/2026-01-27/frame_02_35m30s.jpg)
+
+![t = 36:30](../images/2026-01-27/frame_03_36m30s.jpg)
+
+![t = 37:00](../images/2026-01-27/frame_04_37m00s.jpg)
+
+## Three Types of Undefined Operations
+
+1. **Division by zero** → vertical asymptote (function → ∞)
+2. **Even root of negative number** → restricts domain
+3. **Logarithm of non-positive number** → restricts domain
+
+> The discriminant $b^2 - 4ac < 0$ means no real roots for a quadratic.
+
+## Example 1: Graph $y = \frac{1}{x}$
+
+- Vertical asymptote: $x = 0$
+- Horizontal asymptote: $y = 0$
+- Odd function: $f(-x) = -f(x)$ (symmetric about origin)
+
+**Explore — move the asymptotes with sliders:**
+
+```{=html}
+<div id="calc1" class="desmos-container"></div>
+<script src="https://www.desmos.com/api/v1.9/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6"></script>
+<script>
+  var calc1 = Desmos.GraphingCalculator(document.getElementById('calc1'), {
+    expressions: true,
+    settingsMenu: false
+  });
+  calc1.setExpression({ id: 'a', latex: 'a=1', sliderBounds: {min: -5, max: 5, step: 0.1} });
+  calc1.setExpression({ id: 'h', latex: 'h=0', sliderBounds: {min: -5, max: 5, step: 0.1} });
+  calc1.setExpression({ id: 'k', latex: 'k=0', sliderBounds: {min: -5, max: 5, step: 0.1} });
+  calc1.setExpression({ id: 'func', latex: 'y=\\frac{a}{x-h}+k', color: '#2d70b3' });
+  calc1.setExpression({ id: 'va', latex: 'x=h', color: '#fa7e19', lineStyle: 'DASHED', lineWidth: 1.5 });
+  calc1.setExpression({ id: 'ha', latex: 'y=k', color: '#c74440', lineStyle: 'DASHED', lineWidth: 1.5 });
+  calc1.setMathBounds({ left: -10, right: 10, bottom: -10, top: 10 });
+</script>
+```
+
+## Asymptotic Behavior
+
+For $R(x) = \frac{P(x)}{Q(x)}$, compare degrees:
+
+| Condition | As $x \to \pm\infty$ | Name |
+|---|---|---|
+| $\deg(P) > \deg(Q)$ | $R(x) \to \pm\infty$ | **Top-heavy** |
+| $\deg(P) < \deg(Q)$ | $R(x) \to 0$ | **Bottom-heavy** |
+| $\deg(P) = \deg(Q)$ | $R(x) \to \frac{a_n}{b_n}$ | Horizontal asymptote |
+
+### Sign at infinity
+
+Count the number of negative factors (including leading coefficient). Even/odd power roots don't change the sign analysis — just count negatives!
+
+## Behavior near vertical asymptotes
+
+At a vertical asymptote $x = r$ from factor $(x - r)^n$ in denominator:
+
+- **Odd power $n$**: function changes sign (goes $+\infty$ on one side, $-\infty$ on other)
+- **Even power $n$**: function keeps same sign (goes to $\pm\infty$ on both sides)
+
+**Explore a rational function with multiple asymptotes:**
+
+```{=html}
+<div id="calc2" class="desmos-container"></div>
+<script>
+  var calc2 = Desmos.GraphingCalculator(document.getElementById('calc2'), {
+    expressions: true,
+    settingsMenu: false
+  });
+  calc2.setExpression({ id: 'func', latex: 'y=\\frac{(x-2)}{(x+1)(x-3)}', color: '#6042a6' });
+  calc2.setExpression({ id: 'va1', latex: 'x=-1', color: '#fa7e19', lineStyle: 'DASHED' });
+  calc2.setExpression({ id: 'va2', latex: 'x=3', color: '#fa7e19', lineStyle: 'DASHED' });
+  calc2.setExpression({ id: 'ha', latex: 'y=0', color: '#c74440', lineStyle: 'DASHED' });
+  calc2.setExpression({ id: 'zero', latex: '(2, 0)', color: '#388c46', pointSize: 10, label: 'zero', showLabel: true });
+  calc2.setMathBounds({ left: -6, right: 8, bottom: -10, top: 10 });
+</script>
+```
+
+## Key Formulas
+
+::: {.key-formula}
+| Concept | Formula |
+|---|---|
+| Vertical asymptote | Zeros of denominator $Q(x) = 0$ |
+| Sign at infinity | Count negative factors at $x \to +\infty$ |
+| Odd root: sign changes | Even root: sign preserved |
+| Double root | Graph touches axis but doesn't cross |
+:::

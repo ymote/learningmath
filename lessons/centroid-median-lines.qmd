@@ -3,4 +3,110 @@ title: "Centroid & Median Lines"
 date: 2026-02-18
 ---
 
-*Content coming soon — to be converted from notebook.*
+## Topics Covered
+
+- Median lines of a triangle
+- Proving medians are concurrent (meet at one point)
+- The centroid as center of mass
+- Algebraic proof via linear combinations
+- Centroid divides each median in 2:1 ratio
+
+## Key Video Frames
+
+![t = 38:00](../images/2026-02-18/frame_01_38m00s.jpg)
+
+![t = 38:30](../images/2026-02-18/frame_02_38m30s.jpg)
+
+![t = 39:00](../images/2026-02-18/frame_03_39m00s.jpg)
+
+![t = 39:30](../images/2026-02-18/frame_04_39m30s.jpg)
+
+## Find the centroid of a triangle
+
+**Given:** $A = (12, 20)$, $B = (-6, 4)$, $C = (16, 4)$
+
+**Step 1:** Find midpoint $M_A$ (midpoint of $BC$):
+$$M_A = \frac{1}{2}(B + C) = (5, 4)$$
+
+**Step 2:** The centroid lies $\frac{2}{3}$ of the way from vertex to midpoint:
+
+$$G = \frac{1}{3}(A + B + C) = \left(\frac{22}{3}, \frac{28}{3}\right)$$
+
+**Drag the vertices to see the centroid move:**
+
+```{=html}
+<div id="calc1" class="desmos-container"></div>
+<script src="https://www.desmos.com/api/v1.9/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6"></script>
+<script>
+  var calc1 = Desmos.GraphingCalculator(document.getElementById('calc1'), {
+    expressions: true,
+    settingsMenu: false
+  });
+  // Vertices (draggable points)
+  calc1.setExpression({ id: 'Ax', latex: 'a_x=12', sliderBounds: {min: -10, max: 20, step: 0.5} });
+  calc1.setExpression({ id: 'Ay', latex: 'a_y=20', sliderBounds: {min: -5, max: 25, step: 0.5} });
+  calc1.setExpression({ id: 'Bx', latex: 'b_x=-6', sliderBounds: {min: -15, max: 15, step: 0.5} });
+  calc1.setExpression({ id: 'By', latex: 'b_y=4', sliderBounds: {min: -5, max: 25, step: 0.5} });
+  calc1.setExpression({ id: 'Cx', latex: 'c_x=16', sliderBounds: {min: -10, max: 20, step: 0.5} });
+  calc1.setExpression({ id: 'Cy', latex: 'c_y=4', sliderBounds: {min: -5, max: 25, step: 0.5} });
+
+  // Triangle sides
+  calc1.setExpression({ id: 'AB', latex: '((1-t)a_x+t\\cdot b_x,(1-t)a_y+t\\cdot b_y)', parametricDomain: {min: 0, max: 1}, color: '#000000' });
+  calc1.setExpression({ id: 'BC', latex: '((1-t)b_x+t\\cdot c_x,(1-t)b_y+t\\cdot c_y)', parametricDomain: {min: 0, max: 1}, color: '#000000' });
+  calc1.setExpression({ id: 'CA', latex: '((1-t)c_x+t\\cdot a_x,(1-t)c_y+t\\cdot a_y)', parametricDomain: {min: 0, max: 1}, color: '#000000' });
+
+  // Midpoints
+  calc1.setExpression({ id: 'MA', latex: '(\\frac{b_x+c_x}{2}, \\frac{b_y+c_y}{2})', color: '#bbbbbb', pointSize: 8 });
+  calc1.setExpression({ id: 'MB', latex: '(\\frac{a_x+c_x}{2}, \\frac{a_y+c_y}{2})', color: '#bbbbbb', pointSize: 8 });
+  calc1.setExpression({ id: 'MC', latex: '(\\frac{a_x+b_x}{2}, \\frac{a_y+b_y}{2})', color: '#bbbbbb', pointSize: 8 });
+
+  // Medians (dashed)
+  calc1.setExpression({ id: 'medA', latex: '((1-t)a_x+t\\frac{b_x+c_x}{2},(1-t)a_y+t\\frac{b_y+c_y}{2})', parametricDomain: {min: 0, max: 1}, color: '#c74440', lineStyle: 'DASHED' });
+  calc1.setExpression({ id: 'medB', latex: '((1-t)b_x+t\\frac{a_x+c_x}{2},(1-t)b_y+t\\frac{a_y+c_y}{2})', parametricDomain: {min: 0, max: 1}, color: '#2d70b3', lineStyle: 'DASHED' });
+  calc1.setExpression({ id: 'medC', latex: '((1-t)c_x+t\\frac{a_x+b_x}{2},(1-t)c_y+t\\frac{a_y+b_y}{2})', parametricDomain: {min: 0, max: 1}, color: '#388c46', lineStyle: 'DASHED' });
+
+  // Vertices
+  calc1.setExpression({ id: 'A', latex: '(a_x, a_y)', color: '#c74440', pointSize: 12, label: 'A', showLabel: true });
+  calc1.setExpression({ id: 'B', latex: '(b_x, b_y)', color: '#2d70b3', pointSize: 12, label: 'B', showLabel: true });
+  calc1.setExpression({ id: 'C', latex: '(c_x, c_y)', color: '#388c46', pointSize: 12, label: 'C', showLabel: true });
+
+  // Centroid
+  calc1.setExpression({ id: 'G', latex: '(\\frac{a_x+b_x+c_x}{3}, \\frac{a_y+b_y+c_y}{3})', color: '#fa7e19', pointSize: 16, label: 'Centroid G', showLabel: true });
+
+  calc1.setMathBounds({ left: -10, right: 22, bottom: -2, top: 24 });
+</script>
+```
+
+## The Proof: Medians Concur
+
+Write $G$ on **two different** medians and expand in terms of $A, B, C$. Comparing coefficients forces:
+
+$$\alpha = \frac{2}{3}, \quad \beta = \frac{1}{3}$$
+
+This means $G$ is at $\frac{2}{3}$ of the way from each vertex to the opposite midpoint.
+
+### Result: The Centroid Formula
+
+$$\boxed{G = \frac{1}{3}(A + B + C)}$$
+
+The centroid is simply the **average** of the three vertices!
+
+## Why it matters
+
+- The centroid is the **center of mass** — balance point of a triangular board
+- It divides each median in the ratio **2:1** (vertex to midpoint)
+- The proof technique (comparing linear combinations) generalizes to:
+  - Higher dimensions
+  - Equations of planes in 3D
+  - Linear modeling and optimization
+
+## Key Formulas
+
+::: {.key-formula}
+| Concept | Formula |
+|---|---|
+| Centroid | $G = \frac{1}{3}(A + B + C)$ |
+| Median ratio | $G$ divides median in $2:1$ from vertex |
+| Midpoint of side | $M_A = \frac{1}{2}(B + C)$ |
+| Concurrent medians | All 3 medians meet at $G$ |
+:::

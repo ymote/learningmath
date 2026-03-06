@@ -3,4 +3,95 @@ title: "Power Functions & 3D Coordinates"
 date: 2026-02-09
 ---
 
-*Content coming soon — to be converted from notebook.*
+## Topics Covered
+
+- Power functions $y = x^k$ for various $k$
+- Integer, fractional, negative exponents
+- Inverse functions and graphical symmetry
+- Even vs odd functions
+- Behavior at $(0,0)$ and $(1,1)$
+
+## Key Video Frames
+
+![t = 01:00](../images/2026-02-09/frame_01_01m00s.jpg)
+
+![t = 26:40](../images/2026-02-09/frame_02_26m40s.jpg)
+
+![t = 27:00](../images/2026-02-09/frame_03_27m00s.jpg)
+
+![t = 27:20](../images/2026-02-09/frame_04_27m20s.jpg)
+
+## Family of Power Functions
+
+All power functions $y = x^k$ pass through $(1, 1)$ and (for $k \neq 0$) through $(0, 0)$.
+
+- For $x > 1$: higher power → larger value (steeper curve)
+- For $0 < x < 1$: higher power → smaller value (closer to x-axis)
+
+**Explore — change the exponent $k$:**
+
+```{=html}
+<div id="calc1" class="desmos-container"></div>
+<script src="https://www.desmos.com/api/v1.9/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6"></script>
+<script>
+  var calc1 = Desmos.GraphingCalculator(document.getElementById('calc1'), {
+    expressions: true,
+    settingsMenu: false
+  });
+  calc1.setExpression({ id: 'k', latex: 'k=2', sliderBounds: {min: -3, max: 7, step: 0.1} });
+  calc1.setExpression({ id: 'power', latex: 'y=x^k', color: '#2d70b3' });
+  calc1.setExpression({ id: 'ref', latex: 'y=x', color: '#bbbbbb', lineStyle: 'DASHED' });
+  calc1.setExpression({ id: 'p1', latex: '(1, 1)', color: '#c74440', pointSize: 10, label: '(1,1)', showLabel: true });
+  calc1.setMathBounds({ left: -3, right: 5, bottom: -3, top: 8 });
+</script>
+```
+
+## Even vs Odd for fractional exponents
+
+For $y = x^{p/q}$ (in lowest terms):
+
+| Numerator $p$ | Denominator $q$ | Function type | Domain |
+|---|---|---|---|
+| Odd | Odd | **Odd** function | All reals |
+| Even | Odd | **Even** function | All reals |
+| Any | Even | **Neither** | $x \geq 0$ only |
+
+**Example:** $x^{7.4} = x^{37/5}$ — both 37 and 5 are odd → **odd function**
+
+**Example:** $x^{7.2} = x^{36/5}$ — 36 is even → **even function**
+
+## Inverse Functions
+
+- $x^2$ and $\sqrt{x}$ are inverses
+- $x^3$ and $\sqrt[3]{x}$ are inverses
+- Graphically: **mirror image across $y = x$ line**
+- Swapping $x$ and $y$ in the equation gives the inverse
+
+**See the mirror symmetry — $x^2$ vs $\sqrt{x}$:**
+
+```{=html}
+<div id="calc2" class="desmos-container"></div>
+<script>
+  var calc2 = Desmos.GraphingCalculator(document.getElementById('calc2'), {
+    expressions: true,
+    settingsMenu: false
+  });
+  calc2.setExpression({ id: 'n', latex: 'n=2', sliderBounds: {min: 1, max: 5, step: 1} });
+  calc2.setExpression({ id: 'f', latex: 'y=x^n', color: '#2d70b3', domain: {min: 0, max: 10} });
+  calc2.setExpression({ id: 'finv', latex: 'y=x^{\\frac{1}{n}}', color: '#c74440', domain: {min: 0, max: 10} });
+  calc2.setExpression({ id: 'mirror', latex: 'y=x', color: '#bbbbbb', lineStyle: 'DASHED' });
+  calc2.setExpression({ id: 'p1', latex: '(1, 1)', color: '#000000', pointSize: 8 });
+  calc2.setMathBounds({ left: -1, right: 5, bottom: -1, top: 5 });
+</script>
+```
+
+## Key Formulas
+
+::: {.key-formula}
+| Concept | Result |
+|---|---|
+| $x^0 = 1$ | For all $x \neq 0$ |
+| $x^{-n} = \frac{1}{x^n}$ | Negative power = reciprocal |
+| $x^{p/q} = \sqrt[q]{x^p}$ | Fractional power = root |
+| Inverse: swap $x \leftrightarrow y$ | Mirror across $y = x$ |
+:::
