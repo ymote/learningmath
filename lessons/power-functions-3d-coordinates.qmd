@@ -1,0 +1,6 @@
+---
+title: "Power Functions & 3D Coordinates"
+date: 2026-02-09
+---
+
+*Content coming soon — to be converted from notebook.*

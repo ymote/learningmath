@@ -1,0 +1,6 @@
+---
+title: "Triangle Area Ratios & Linear Combinations"
+date: 2026-02-16
+---
+
+*Content coming soon — to be converted from notebook.*

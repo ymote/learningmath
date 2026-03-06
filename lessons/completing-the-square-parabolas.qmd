@@ -1,0 +1,126 @@
+---
+title: "Completing the Square & Parabolas"
+date: 2026-01-13
+---
+
+## Topics Covered
+
+- Completing the square process
+- Graphing quadratic functions
+- Vertex form and axis of symmetry (AOS)
+- Parabolas: upward vs downward opening
+- Maximum and minimum of quadratic functions
+- Constructing equations from graphs
+
+## Lecture Video
+
+```{=html}
+<!-- Replace VIDEO_ID with your YouTube video ID, or use a local file -->
+<!-- YouTube example: -->
+<!-- <div class="video-container">
+  <iframe src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0" allowfullscreen></iframe>
+</div> -->
+
+<!-- Local video example: -->
+<!-- <video controls width="100%">
+  <source src="../videos/2026-01-13.mp4" type="video/mp4">
+</video> -->
+<p><em>Video placeholder — add YouTube URL or local .mp4 file</em></p>
+```
+
+## Key Concepts
+
+### Completing the Square
+
+For a quadratic $y = x^2 + ax + b$:
+
+1. Focus on the $x$ terms: $x^2 + ax$
+2. Half the middle coefficient: $\left(\frac{a}{2}\right)$
+3. Write as: $\left(x + \frac{a}{2}\right)^2$
+4. Compensate: $y = \left(x + \frac{a}{2}\right)^2 + \left(b - \frac{a^2}{4}\right)$
+
+### Example 1: $y = x^2 - 4x + 5$
+
+$$y = x^2 - 4x + 5 = (x - 2)^2 + 1$$
+
+- Half the coefficient of $x$: $\frac{-4}{2} = -2$
+- $(x-2)^2 = x^2 - 4x + 4$ gives us the first two terms
+- Compensate: $5 - 4 = 1$, so $y = (x-2)^2 + 1$
+
+**Try it — drag the sliders to change $a$, $h$, $k$:**
+
+```{=html}
+<div id="calc1" class="desmos-container"></div>
+<script src="https://www.desmos.com/api/v1.9/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6"></script>
+<script>
+  var calc1 = Desmos.GraphingCalculator(document.getElementById('calc1'), {
+    expressions: true,
+    settingsMenu: false
+  });
+  calc1.setExpression({ id: 'a', latex: 'a=1', sliderBounds: {min: -3, max: 3, step: 0.1} });
+  calc1.setExpression({ id: 'h', latex: 'h=2', sliderBounds: {min: -5, max: 5, step: 0.1} });
+  calc1.setExpression({ id: 'k', latex: 'k=1', sliderBounds: {min: -10, max: 10, step: 0.1} });
+  calc1.setExpression({ id: 'parabola', latex: 'y=a(x-h)^2+k', color: '#2d70b3' });
+  calc1.setExpression({ id: 'vertex', latex: '(h, k)', color: '#c74440', pointStyle: 'POINT', pointSize: 12 });
+  calc1.setExpression({ id: 'aos', latex: 'x=h', color: '#c74440', lineStyle: 'DASHED', lineWidth: 1.5 });
+  calc1.setMathBounds({ left: -5, right: 9, bottom: -3, top: 15 });
+</script>
+```
+
+### Example 2: $y = -2x^2 - 12x$
+
+$$y = -2(x+3)^2 + 18$$
+
+- **Vertex:** $(-3, 18)$ — this is a **maximum**
+- **AOS:** $x = -3$
+- Opens **downward** (leading coefficient $< 0$)
+
+```{=html}
+<div id="calc2" class="desmos-container"></div>
+<script>
+  var calc2 = Desmos.GraphingCalculator(document.getElementById('calc2'), {
+    expressions: true,
+    settingsMenu: false
+  });
+  calc2.setExpression({ id: 'parabola', latex: 'y=-2(x+3)^2+18', color: '#6042a6' });
+  calc2.setExpression({ id: 'vertex', latex: '(-3, 18)', color: '#c74440', pointStyle: 'POINT', pointSize: 12, label: 'Vertex (-3, 18)', showLabel: true });
+  calc2.setExpression({ id: 'aos', latex: 'x=-3', color: '#c74440', lineStyle: 'DASHED' });
+  calc2.setExpression({ id: 'x1', latex: '(-6, 0)', color: '#388c46', pointSize: 10, label: 'x-intercept', showLabel: true });
+  calc2.setExpression({ id: 'x2', latex: '(0, 0)', color: '#388c46', pointSize: 10, label: 'x-intercept', showLabel: true });
+  calc2.setMathBounds({ left: -10, right: 4, bottom: -5, top: 22 });
+</script>
+```
+
+### Example 3: Construct equation from graph
+
+**Given:** Vertex at $(4, -1)$ and a point at $(7, -7)$
+
+1. From vertex: $y = k(x - 4)^2 - 1$
+2. Plug in $(7, -7)$: $-7 = k(3)^2 - 1 \Rightarrow k = -\frac{2}{3}$
+3. **Answer:** $y = -\frac{2}{3}(x-4)^2 - 1$
+
+```{=html}
+<div id="calc3" class="desmos-container"></div>
+<script>
+  var calc3 = Desmos.GraphingCalculator(document.getElementById('calc3'), {
+    expressions: true,
+    settingsMenu: false
+  });
+  calc3.setExpression({ id: 'parabola', latex: 'y=-\\frac{2}{3}(x-4)^2-1', color: '#2d70b3' });
+  calc3.setExpression({ id: 'vertex', latex: '(4, -1)', color: '#c74440', pointSize: 12, label: 'Vertex (4, -1)', showLabel: true });
+  calc3.setExpression({ id: 'pt', latex: '(7, -7)', color: '#388c46', pointSize: 10, label: '(7, -7)', showLabel: true });
+  calc3.setExpression({ id: 'aos', latex: 'x=4', color: '#c74440', lineStyle: 'DASHED' });
+  calc3.setMathBounds({ left: -2, right: 12, bottom: -12, top: 4 });
+</script>
+```
+
+## Key Formulas
+
+::: {.key-formula}
+| Formula | Meaning |
+|---|---|
+| $y = a(x-h)^2 + k$ | Vertex form; vertex at $(h, k)$ |
+| AOS: $x = -\frac{a}{2}$ | Axis of symmetry (when $y = x^2 + ax + b$) |
+| Vertex $y$-coord: $b - \frac{a^2}{4}$ | Maximum (if $a<0$) or minimum (if $a>0$) |
+| $a > 0$: opens up (minimum) | $a < 0$: opens down (maximum) |
+:::

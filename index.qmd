@@ -1,0 +1,18 @@
+---
+title: "Learning Math"
+---
+
+Interactive math notes with Desmos graphs and lecture videos.
+
+## Lessons
+
+| Date | Topic |
+|------|-------|
+| Jan 13 | [Completing the Square & Parabolas](lessons/completing-the-square-parabolas.qmd) |
+| Jan 20 | [Quadratic Equations & Graphing](lessons/quadratic-equations-graphing.qmd) |
+| Jan 27 | [Rational Functions & Asymptotes](lessons/rational-functions-asymptotes.qmd) |
+| Feb 03 | [Polynomial Graphing & Transformations](lessons/polynomial-graphing-transformations.qmd) |
+| Feb 09 | [Power Functions & 3D Coordinates](lessons/power-functions-3d-coordinates.qmd) |
+| Feb 10 | [Vectors & Parametric Equations](lessons/vectors-parametric-equations.qmd) |
+| Feb 16 | [Triangle Area Ratios & Linear Combinations](lessons/triangle-area-ratios-linear-combinations.qmd) |
+| Feb 18 | [Centroid & Median Lines](lessons/centroid-median-lines.qmd) |
