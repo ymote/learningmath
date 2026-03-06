@@ -11,6 +11,10 @@ date: 2026-02-10
 - Parametric equations of a line
 - Extension to 3D
 
+## Lecture Video
+
+{{< video ../videos/2026-02-10_vectors-parametric-equations.mp4 >}}
+
 ## Key Video Frames
 
 ![t = 07:30](../images/2026-02-10/frame_01_07m30s.jpg)

@@ -12,6 +12,10 @@ date: 2026-01-13
 - Maximum and minimum of quadratic functions
 - Constructing equations from graphs
 
+## Lecture Video
+
+{{< video ../videos/2026-01-13_completing-the-square-parabolas.mp4 >}}
+
 ## Key Video Frames
 
 ![t = 35:00](../images/2026-01-13/frame_01_35m00s.jpg)

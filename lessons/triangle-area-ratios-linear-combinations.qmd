@@ -11,6 +11,10 @@ date: 2026-02-16
 - Three types of regions around a triangle
 - Proof: segment ratios = area ratios
 
+## Lecture Video
+
+{{< video ../videos/2026-02-16_triangle-area-ratios-linear-combinations.mp4 >}}
+
 ## Key Video Frames
 
 ![t = 06:30](../images/2026-02-16/frame_01_06m30s.jpg)

@@ -11,6 +11,10 @@ date: 2026-02-18
 - Algebraic proof via linear combinations
 - Centroid divides each median in 2:1 ratio
 
+## Lecture Video
+
+{{< video ../videos/2026-02-18_centroid-median-lines.mp4 >}}
+
 ## Key Video Frames
 
 ![t = 38:00](../images/2026-02-18/frame_01_38m00s.jpg)

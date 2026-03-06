@@ -12,6 +12,10 @@ date: 2026-01-27
 - Three types of undefined operations
 - Graphing rational functions
 
+## Lecture Video
+
+{{< video ../videos/2026-01-27_rational-functions-asymptotes.mp4 >}}
+
 ## Key Video Frames
 
 ![t = 22:00](../images/2026-01-27/frame_01_22m00s.jpg)

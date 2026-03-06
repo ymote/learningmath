@@ -12,6 +12,10 @@ date: 2026-02-03
 - The discriminant: $\Delta = b^2 - 4ac$
 - Double roots, triple roots, and graph behavior
 
+## Lecture Video
+
+{{< video ../videos/2026-02-03_polynomial-graphing-transformations.mp4 >}}
+
 ## Key Video Frames
 
 ![t = 01:00](../images/2026-02-03/frame_01_01m00s.jpg)
