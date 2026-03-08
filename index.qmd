@@ -16,3 +16,5 @@ Interactive math notes with Desmos graphs and lecture videos.
 | Feb 10 | [Vectors & Parametric Equations](lessons/vectors-parametric-equations.qmd) |
 | Feb 16 | [Triangle Area Ratios & Linear Combinations](lessons/triangle-area-ratios-linear-combinations.qmd) |
 | Feb 18 | [Centroid & Median Lines](lessons/centroid-median-lines.qmd) |
+| Feb 23 | [Trapezoid Midsegments & Signed Barycentric Coordinates](lessons/trapezoid-midsegments-signed-coordinates.qmd) |
+| Feb 25 | [Similar Figures, Signed Areas & Exterior Barycentric Proof](lessons/similar-figures-signed-areas.qmd) |

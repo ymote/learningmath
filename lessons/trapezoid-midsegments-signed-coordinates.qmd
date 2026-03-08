@@ -1,0 +1,174 @@
+---
+title: "Trapezoid Midsegments & Signed Barycentric Coordinates"
+date: 2026-02-23
+---
+
+::: {.callout-tip collapse="true"}
+## Why Signed Coordinates Matter
+
+When GPS maps your position, they don't care whether you're "inside" or "outside" a region — the math works the same way. Signed coordinates let mathematicians describe **any** point in the plane using just three reference vertices, even points outside the triangle. This same idea powers computer graphics, robotics, and physics simulations.
+:::
+
+## Topics Covered
+
+- Review: barycentric coordinates for interior points — $P = \frac{S_1}{S}A + \frac{S_2}{S}B + \frac{S_3}{S}C$
+- Butterfly triangle area ratios: equal ratios propagate through sub-triangles
+- Trapezoid median line: proof that $m = \frac{u + \ell}{2}$ using vector methods
+- Generalizing to any trisector line: $x = \frac{2}{3}u + \frac{1}{3}\ell$
+- Weighted averages applied to segment lengths (not just coordinates)
+- Negative weights: what happens when a point lies outside the segment
+- Signed barycentric coordinates for exterior points
+
+## Lecture Video
+
+```{=html}
+<video controls width="100%" preload="metadata">
+  <source src="https://github.com/ymote/learningmath/releases/download/v1.0/2026-02-23_trapezoid-midsegments-signed-coordinates.mp4" type="video/mp4">
+</video>
+```
+
+## Key Video Frames
+
+![](../images/2026-02-23/frame_01.jpg)
+
+![](../images/2026-02-23/frame_02.jpg)
+
+![](../images/2026-02-23/frame_03.jpg)
+
+![](../images/2026-02-23/frame_04.jpg)
+
+## What You Need to Know First
+
+::: {.callout-note collapse="true"}
+## What are barycentric coordinates?
+
+Given a triangle $ABC$ and a point $P$ inside it, connect $P$ to all three vertices. This divides the triangle into three smaller triangles with areas $S_1$, $S_2$, $S_3$ (opposite vertices $A$, $B$, $C$ respectively).
+
+The point $P$ can be written as a **weighted average** of the vertices:
+
+$$P = \frac{S_1}{S}A + \frac{S_2}{S}B + \frac{S_3}{S}C$$
+
+where $S = S_1 + S_2 + S_3$ is the total area. The weights always add up to 1.
+:::
+
+::: {.callout-note collapse="true"}
+## What is a trapezoid?
+
+A **trapezoid** is a quadrilateral with exactly one pair of parallel sides. The parallel sides are called **bases** (upper base $u$ and lower base $\ell$), and the perpendicular distance between them is the **height** $h$.
+
+**Area** $= \frac{1}{2}(u + \ell) \cdot h$
+
+The **median line** (midsegment) connects the midpoints of the two non-parallel sides.
+:::
+
+## Key Concepts
+
+### Trapezoid Median Line via Vectors
+
+Label the trapezoid vertices $A$, $B$, $C$, $D$ where $AD$ is the upper base (length $u$) and $BC$ is the lower base (length $\ell$).
+
+The midpoints of the non-parallel sides are:
+$$M = \frac{A + B}{2}, \quad N = \frac{D + C}{2}$$
+
+The median length is:
+$$|N - M| = \left|\frac{D + C}{2} - \frac{A + B}{2}\right| = \frac{1}{2}|(\underbrace{D - A}_{= u}) + (\underbrace{C - B}_{= \ell})| = \frac{u + \ell}{2}$$
+
+::: {.callout-tip collapse="true"}
+## Why vectors make this so clean
+
+Instead of drawing auxiliary constructions (flipping the trapezoid, making parallelograms), we express each point as a vector and use algebra. The key insight: $D - A$ and $C - B$ point in the **same direction** (both horizontal), so their magnitudes add directly.
+:::
+
+**Explore — drag the vertices to reshape the trapezoid:**
+
+```{=html}
+<div id="calc1" class="desmos-container"></div>
+<script src="https://www.desmos.com/api/v1.9/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6"></script>
+<script>
+  var calc1 = Desmos.GraphingCalculator(document.getElementById('calc1'), {
+    expressions: true,
+    settingsMenu: false
+  });
+  calc1.setExpression({ id: 'A', latex: 'A=(1,4)', color: '#2d70b3', pointSize: 10, label: 'A', showLabel: true });
+  calc1.setExpression({ id: 'B', latex: 'B=(0,0)', color: '#2d70b3', pointSize: 10, label: 'B', showLabel: true });
+  calc1.setExpression({ id: 'C', latex: 'C=(8,0)', color: '#2d70b3', pointSize: 10, label: 'C', showLabel: true });
+  calc1.setExpression({ id: 'D', latex: 'D=(5,4)', color: '#2d70b3', pointSize: 10, label: 'D', showLabel: true });
+  calc1.setExpression({ id: 'trap', latex: 'polygon(A,B,C,D)', color: '#2d70b3', fillOpacity: 0.1 });
+  calc1.setExpression({ id: 'M', latex: 'M=\\frac{A+B}{2}', color: '#c74440', pointSize: 8, label: 'M (midpoint)', showLabel: true });
+  calc1.setExpression({ id: 'N', latex: 'N=\\frac{D+C}{2}', color: '#c74440', pointSize: 8, label: 'N (midpoint)', showLabel: true });
+  calc1.setExpression({ id: 'med', latex: 'segment(M,N)', color: '#c74440', lineWidth: 3 });
+  calc1.setMathBounds({ left: -2, right: 10, bottom: -2, top: 7 });
+</script>
+```
+
+### Generalizing: Trisector Lines
+
+If instead of the midpoint we take the point $\frac{1}{3}$ of the way from the top:
+
+$$P = \frac{2}{3}A + \frac{1}{3}B, \quad Q = \frac{2}{3}D + \frac{1}{3}C$$
+
+Then:
+
+$$x = |Q - P| = \frac{2}{3}u + \frac{1}{3}\ell$$
+
+The weighted average of the bases gives the length at **any** height — just change the weights!
+
+### Negative Weights: Points Outside
+
+When a point $P$ lies **outside** a line segment $AB$, we can still write it as a weighted average — but one weight becomes **negative**.
+
+::: {.callout-important}
+## Key Idea: Signed Weights
+
+If $P$ is outside segment $AB$ with ratio $AP:PB = 6:(-1)$, then:
+
+$$P = \frac{-1}{5}A + \frac{6}{5}B$$
+
+The weights **must still add up to 1**: $\frac{-1}{5} + \frac{6}{5} = 1$.
+
+A negative weight means you've gone **past** the endpoint — the point is "beyond" one vertex.
+:::
+
+```{=html}
+<div id="calc2" class="desmos-container"></div>
+<script>
+  var calc2 = Desmos.GraphingCalculator(document.getElementById('calc2'), {
+    expressions: true,
+    settingsMenu: false
+  });
+  calc2.setExpression({ id: 't', latex: 't=0.5', sliderBounds: {min: -0.5, max: 1.5, step: 0.01} });
+  calc2.setExpression({ id: 'A', latex: 'A=(1,2)', color: '#2d70b3', pointSize: 10, label: 'A', showLabel: true });
+  calc2.setExpression({ id: 'B', latex: 'B=(7,2)', color: '#2d70b3', pointSize: 10, label: 'B', showLabel: true });
+  calc2.setExpression({ id: 'seg', latex: 'segment(A,B)', color: '#2d70b3', lineWidth: 2 });
+  calc2.setExpression({ id: 'P', latex: 'P=(1-t)A+tB', color: '#c74440', pointSize: 12, label: 'P = (1-t)A + tB', showLabel: true });
+  calc2.setExpression({ id: 'wA', latex: '(1,4)', color: '#388c46', label: 'weight on A = 1-t', showLabel: true, pointSize: 0 });
+  calc2.setExpression({ id: 'wB', latex: '(7,4)', color: '#6042a6', label: 'weight on B = t', showLabel: true, pointSize: 0 });
+  calc2.setMathBounds({ left: -2, right: 10, bottom: -1, top: 6 });
+</script>
+```
+
+### Signed Barycentric Coordinates
+
+For a point $P$ **outside** triangle $ABC$, the same formula works:
+
+$$P = \frac{S_1}{S}A + \frac{S_2}{S}B + \frac{S_3}{S}C$$
+
+The area $S_i$ is **negative** when $P$ is on the opposite side of edge $i$ from the triangle's interior. The total signed area $S = S_1 + S_2 + S_3$ still equals the triangle's area.
+
+## Cheat Sheet
+
+::: {.key-formula}
+| What you want | What to do |
+|---|---|
+| Median of trapezoid | $m = \frac{u + \ell}{2}$ |
+| Line at fraction $t$ from top | $x = (1-t) \cdot u + t \cdot \ell$ |
+| Point outside segment | Use negative weight; weights still sum to 1 |
+| Exterior barycentric coords | Same formula; area opposite the "far" vertex is negative |
+| Butterfly ratios | All sub-triangle pairs sharing a cevian follow the same ratio |
+
+### Vector Approach to Segment Lengths
+
+$$|Q - P| = |(1-t)(D-A) + t(C-B)| = (1-t) \cdot u + t \cdot \ell$$
+
+(works because both vectors point in the same direction)
+:::
