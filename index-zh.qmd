@@ -1,0 +1,20 @@
+---
+title: "数学学习"
+---
+
+交互式数学课程笔记，包含视频和 Desmos 图表。
+
+## 课程列表
+
+| 日期 | 主题 |
+|------|------|
+| 1月13日 | [配方法与抛物线](lessons-zh/completing-the-square-parabolas.qmd) |
+| 1月20日 | [二次方程与图形](lessons-zh/quadratic-equations-graphing.qmd) |
+| 1月27日 | [有理函数与渐近线](lessons-zh/rational-functions-asymptotes.qmd) |
+| 2月3日 | [多项式图形与变换](lessons-zh/polynomial-graphing-transformations.qmd) |
+| 2月9日 | [幂函数与三维坐标](lessons-zh/power-functions-3d-coordinates.qmd) |
+| 2月10日 | [向量与参数方程](lessons-zh/vectors-parametric-equations.qmd) |
+| 2月16日 | [三角形面积比与线性组合](lessons-zh/triangle-area-ratios-linear-combinations.qmd) |
+| 2月18日 | [重心与中线](lessons-zh/centroid-median-lines.qmd) |
+| 2月23日 | [梯形中位线与有符号重心坐标](lessons-zh/trapezoid-midsegments-signed-coordinates.qmd) |
+| 2月25日 | [相似图形、有符号面积与外部重心坐标证明](lessons-zh/similar-figures-signed-areas.qmd) |

@@ -1,0 +1,137 @@
+---
+title: "三角形面积比与线性组合"
+date: 2026-02-16
+---
+
+::: {.callout-tip collapse="true"}
+## 现实应用：计算机图形中的三角形
+
+电子游戏和电影中的每一个3D模型都是由无数小三角形组成的！当游戏渲染一个角色的面部时，它通过对三角形各顶点颜色取加权平均来计算每个像素的颜色。
+
+这就是**重心插值**——正是我们今天要学的内容。每一帧3D游戏画面每秒都要使用这个数学运算数十亿次！
+:::
+
+## 本课内容
+
+- 三角形的重心坐标
+- 面积比决定线性组合的权重
+- 内部点、外部点和边界点
+- 三角形周围的三种区域类型
+- 证明：线段比=面积比
+
+::: {.callout-note collapse="true"}
+## 回顾：直线上的点（2个端点）
+
+在 $A$ 和 $B$ 之间的直线上：
+$$P = \alpha \cdot A + \beta \cdot B \quad\text{其中}\quad \alpha + \beta = 1$$
+
+- 两个权重都为正 → $P$ 在 $A$ 和 $B$ 之间
+- 一个权重为负 → $P$ 在线段外部
+- 权重与到对面端点的距离成正比（越近 → 权重越大）
+
+现在我们将这个概念从2个点推广到3个点！
+:::
+
+## 课程视频
+
+```{=html}
+<video controls width="100%" preload="metadata">
+  <source src="https://github.com/ymote/learningmath/releases/download/v1.0/2026-02-16_triangle-area-ratios-linear-combinations.mp4" type="video/mp4">
+</video>
+```
+
+## 课程关键帧
+
+![t = 06:30](../images/2026-02-16/frame_01_06m30s.jpg)
+
+![t = 24:00](../images/2026-02-16/frame_02_24m00s.jpg)
+
+![t = 28:00](../images/2026-02-16/frame_03_28m00s.jpg)
+
+![t = 28:30](../images/2026-02-16/frame_04_28m30s.jpg)
+
+## 点作为三角形顶点的加权平均
+
+对于平面上三角形 $ABC$ 中的任意点 $P$：
+
+$$P = \frac{\Delta_A}{\Delta} \cdot A + \frac{\Delta_B}{\Delta} \cdot B + \frac{\Delta_C}{\Delta} \cdot C$$
+
+::: {.callout-tip collapse="true"}
+## 为什么是面积？
+
+在直线上，权重与**距离**（一维度量）相关。
+
+在三角形中，权重与**面积**（二维度量）相关。
+
+证明用到了一个优美的事实：
+
+> 如果两个三角形共享相同的高，则它们的面积比等于底边比。
+
+$$\frac{\text{Area}(\triangle ACD)}{\text{Area}(\triangle ABD)} = \frac{CD}{BD}$$
+
+因为面积 = $\frac{1}{2} \times \text{底} \times \text{高}$，而共享的高相互抵消了！
+:::
+
+其中：
+
+- $\Delta_A$ = 三角形 $BPC$ 的面积（$A$ 的对面）
+- $\Delta_B$ = 三角形 $APC$ 的面积（$B$ 的对面）
+- $\Delta_C$ = 三角形 $APB$ 的面积（$C$ 的对面）
+- $\Delta = \Delta_A + \Delta_B + \Delta_C$ = $ABC$ 的总面积
+
+**拖动点 $P$，观察权重的变化：**
+
+```{=html}
+<div id="calc1" class="desmos-container"></div>
+<script src="https://www.desmos.com/api/v1.9/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6"></script>
+<script>
+  var calc1 = Desmos.GraphingCalculator(document.getElementById('calc1'), {
+    expressions: true,
+    settingsMenu: false
+  });
+  calc1.setExpression({ id: 'A', latex: '(1, 8)', color: '#c74440', pointSize: 12, label: 'A', showLabel: true });
+  calc1.setExpression({ id: 'B', latex: '(7, 2)', color: '#2d70b3', pointSize: 12, label: 'B', showLabel: true });
+  calc1.setExpression({ id: 'C', latex: '(10, 9)', color: '#388c46', pointSize: 12, label: 'C', showLabel: true });
+  calc1.setExpression({ id: 'AB', latex: '((1-t)\\cdot1+t\\cdot7, (1-t)\\cdot8+t\\cdot2)', parametricDomain: {min: 0, max: 1}, color: '#000000' });
+  calc1.setExpression({ id: 'BC', latex: '((1-t)\\cdot7+t\\cdot10, (1-t)\\cdot2+t\\cdot9)', parametricDomain: {min: 0, max: 1}, color: '#000000' });
+  calc1.setExpression({ id: 'CA', latex: '((1-t)\\cdot10+t\\cdot1, (1-t)\\cdot9+t\\cdot8)', parametricDomain: {min: 0, max: 1}, color: '#000000' });
+  calc1.setExpression({ id: 'G', latex: '(6, 6.33)', color: '#fa7e19', pointSize: 14, label: 'Centroid (equal weights)', showLabel: true });
+  calc1.setMathBounds({ left: -1, right: 13, bottom: 0, top: 11 });
+</script>
+```
+
+## 三种区域类型
+
+权重 $\alpha, \beta, \gamma$（其中 $\alpha + \beta + \gamma = 1$）可以对点进行分类：
+
+| 区域 | 权重 | 位置 |
+|---|---|---|
+| **类型 1**（内部） | 全部为正：$\alpha, \beta, \gamma > 0$ | 三角形内部 |
+| **类型 2**（靠近顶点） | 一个 $> 1$，另外两个 $< 0$ | 超过某个顶点 |
+| **类型 3**（靠近边） | 一个 $< 0$，另外两个 $> 0$ | 超过某条边 |
+
+## 证明：线段比=面积比
+
+若 $D$ 在线段 $BC$ 上，则：
+
+$$\frac{CD}{BD} = \frac{[\triangle ACD]}{[\triangle ABD]}$$
+
+**为什么？** 两个三角形共享从 $A$ 到直线 $BC$ 的同一高度 $h$：
+
+$$\frac{[ACD]}{[ABD]} = \frac{\frac{1}{2} \cdot CD \cdot h}{\frac{1}{2} \cdot BD \cdot h} = \frac{CD}{BD}$$
+
+这是关键洞见：**相同的高 → 面积比 = 底边比**
+
+## 速查表
+
+::: {.key-formula}
+| 概念 | 公式 |
+|---|---|
+| 三角形中的点 | $P = \alpha A + \beta B + \gamma C$，权重之和为1 |
+| 顶点 $A$ 的权重 | $\alpha = \frac{\text{Area}(\triangle BPC)}{\text{Area}(\triangle ABC)}$ |
+| 在三角形内部 | 三个权重都为正 |
+| 在某条边上 | 一个权重 = 0 |
+| 在某个顶点 | 一个权重 = 1，其余 = 0 |
+| 重心 | 所有权重 = $\frac{1}{3}$ |
+| 面积比 = 底边比 | 当三角形共享相同的高时 |
+:::

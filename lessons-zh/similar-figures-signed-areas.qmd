@@ -1,0 +1,191 @@
+---
+title: "相似图形、有符号面积与外部重心坐标证明"
+date: 2026-02-25
+---
+
+::: {.callout-tip collapse="true"}
+## 相似与缩放为什么重要
+
+当建筑师制作一座桥梁的比例模型时，他们知道每个长度放大一倍，面积就会变为4倍，体积变为8倍。这个**缩放定律**随处可见——从计算药物剂量（按体表面积缩放）到理解为什么大象的腿比老鼠的粗（体积增长比截面积更快）。
+:::
+
+## 本课内容
+
+- 交叉（扭曲）梯形的有符号面积
+- 证明梯形面积公式在底为负数时仍然成立
+- 相似三角形：面积比 = (线性比)$^2$
+- 体积缩放：体积比 = (线性比)$^3$
+- 求交叉梯形的几何（无符号）面积
+- 严格证明：外部点的重心坐标
+- 蝴蝶三角形方法推广到外部点
+
+## 课程视频
+
+```{=html}
+<video controls width="100%" preload="metadata">
+  <source src="https://github.com/ymote/learningmath/releases/download/v1.0/2026-02-25_similar-figures-signed-areas.mp4" type="video/mp4">
+</video>
+```
+
+## 课程关键帧
+
+![](../images/2026-02-25/frame_01.jpg)
+
+![](../images/2026-02-25/frame_02.jpg)
+
+![](../images/2026-02-25/frame_03.jpg)
+
+![](../images/2026-02-25/frame_04.jpg)
+
+## 预备知识
+
+::: {.callout-note collapse="true"}
+## 什么是相似三角形？
+
+如果两个三角形的角相同，那么它们是**相似**的。这意味着所有对应边的比例相同（即**线性比**）。
+
+若 $\triangle ABC \sim \triangle DEF$，线性比为 $k$，则：
+- $DEF$ 的每条边是 $ABC$ 对应边的 $k$ 倍
+- $\text{Area}(DEF) = k^2 \cdot \text{Area}(ABC)$
+:::
+
+::: {.callout-note collapse="true"}
+## 什么是有符号面积？
+
+**有符号面积**为面积赋予一个方向。当沿逆时针方向遍历时，区域面积为**正**；当沿顺时针方向遍历时为**负**——或者等价地，当一个点在某条边的"错误一侧"时为负。这使得公式可以统一处理内部和外部的情况，而无需分类讨论。
+:::
+
+## 核心要点
+
+### 交叉梯形的有符号面积
+
+当你"扭曲"一个梯形（使非平行边交叉）时，上底实际上指向**反方向**。将它视为 $-a$ 而非 $a$：
+
+$$\text{有符号面积} = \frac{1}{2}(b - a) \cdot h$$
+
+这给出的是两个三角形区域的差，而非它们的和。
+
+::: {.callout-important}
+## 核心要点：有符号面积 vs. 无符号面积
+
+| 类型 | 公式 | 含义 |
+|---|---|---|
+| **有符号**面积 | $\frac{1}{2}(b - a)h$ | $A_2 - A_1$（两个三角形的差） |
+| **无符号**面积 | $\frac{1}{2} \cdot \frac{a^2 + b^2}{a + b} \cdot h$ | $A_1 + A_2$（两个三角形的和） |
+
+有符号版本只是标准梯形公式中令 $a$ 为负——公式本身不变，只是输入的符号变了！
+:::
+
+```{=html}
+<div id="calc1" class="desmos-container"></div>
+<script src="https://www.desmos.com/api/v1.9/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6"></script>
+<script>
+  var calc1 = Desmos.GraphingCalculator(document.getElementById('calc1'), {
+    expressions: true,
+    settingsMenu: false
+  });
+  calc1.setExpression({ id: 'a', latex: 'a=2', sliderBounds: {min: 0.5, max: 5, step: 0.1} });
+  calc1.setExpression({ id: 'b', latex: 'b=6', sliderBounds: {min: 0.5, max: 8, step: 0.1} });
+  calc1.setExpression({ id: 'h', latex: 'h=4', sliderBounds: {min: 1, max: 6, step: 0.1} });
+  calc1.setExpression({ id: 'A', latex: 'A=(4-a/2, h)', color: '#2d70b3', pointSize: 8, label: 'A', showLabel: true });
+  calc1.setExpression({ id: 'D', latex: 'D=(4+a/2, h)', color: '#2d70b3', pointSize: 8, label: 'D', showLabel: true });
+  calc1.setExpression({ id: 'B', latex: 'B=(4-b/2, 0)', color: '#c74440', pointSize: 8, label: 'B', showLabel: true });
+  calc1.setExpression({ id: 'C', latex: 'C=(4+b/2, 0)', color: '#c74440', pointSize: 8, label: 'C', showLabel: true });
+  calc1.setExpression({ id: 'trap', latex: 'polygon(A,B,C,D)', color: '#2d70b3', fillOpacity: 0.15 });
+  calc1.setExpression({ id: 'area_label', latex: '(4, h/2)', color: '#388c46', label: 'Area = ½(a+b)·h', showLabel: true, pointSize: 0 });
+  calc1.setMathBounds({ left: -2, right: 10, bottom: -2, top: 8 });
+</script>
+```
+
+### 面积与体积的缩放
+
+对于线性比为 $k = \frac{a}{b}$ 的相似图形：
+
+| 维度 | 缩放倍数 |
+|---|---|
+| 长度 | $\times\, k$ |
+| 面积 | $\times\, k^2$ |
+| 体积 | $\times\, k^3$ |
+
+**示例：** 两个相似三角形，边长比为 $1:2$。
+
+- 面积比：$1:4$（不是 $1:2$！）
+- 如果是三维棱锥，体积比：$1:8$
+
+::: {.callout-tip collapse="true"}
+## 快速直觉
+
+想象一个正方形：把每条边加倍，你可以在里面放下**4**个原来的正方形。对于正方体：把每条棱加倍，你可以放下**8**个原来的正方体。这对*任何*形状都成立，不仅仅是正方形和正方体——相似性保证了这一点。
+:::
+
+```{=html}
+<div id="calc2" class="desmos-container"></div>
+<script>
+  var calc2 = Desmos.GraphingCalculator(document.getElementById('calc2'), {
+    expressions: true,
+    settingsMenu: false
+  });
+  calc2.setExpression({ id: 'k', latex: 'k=2', sliderBounds: {min: 0.5, max: 4, step: 0.1} });
+  calc2.setExpression({ id: 'small', latex: 'polygon((0,0),(1,0),(0.5,0.87))', color: '#2d70b3', fillOpacity: 0.3 });
+  calc2.setExpression({ id: 'big', latex: 'polygon((2,0),(2+k,0),(2+k/2,0.87k))', color: '#c74440', fillOpacity: 0.2 });
+  calc2.setExpression({ id: 'label1', latex: '(0.5, -0.5)', color: '#2d70b3', label: 'Area = 1', showLabel: true, pointSize: 0 });
+  calc2.setExpression({ id: 'label2', latex: '(2+k/2, -0.5)', color: '#c74440', label: 'Area = k²', showLabel: true, pointSize: 0 });
+  calc2.setMathBounds({ left: -1, right: 10, bottom: -2, top: 6 });
+</script>
+```
+
+### 分解交叉梯形
+
+给定一个交叉梯形，上底为 $a$，下底为 $b$（$b > a$），交叉产生两个相似三角形：
+
+- 上三角形（面积 $A_1$）：底为 $a$
+- 下三角形（面积 $A_2$）：底为 $b$
+- 面积比：$\frac{A_1}{A_2} = \frac{a^2}{b^2}$
+
+高按比例分配：$h_1 = \frac{a}{a+b} \cdot h$，$h_2 = \frac{b}{a+b} \cdot h$
+
+因此：
+$$A_2 = \frac{1}{2} \cdot b \cdot \frac{b}{a+b} \cdot h = \frac{b^2}{2(a+b)} \cdot h$$
+
+$$A_1 + A_2 = \frac{a^2 + b^2}{2(a+b)} \cdot h$$
+
+### 外部重心坐标：证明
+
+要证明当 $P$ 在 $\triangle ABC$ 外部时，$P = \frac{S_1}{S}A + \frac{S_2}{S}B + \frac{S_3}{S}C$ 仍然成立：
+
+1. **延长** $AP$ 交 $BC$ 于点 $D$
+2. **将** $D$ 写成 $B$ 和 $C$ 的加权平均，利用比例 $\frac{CD}{BD} = \frac{S_2}{S_3}$
+   - 这里用到了蝴蝶三角形比例：共享角平分线的子三角形保持相同的底边比
+3. **将** $P$ 写成 $A$ 和 $D$ 的加权平均，利用比例 $\frac{AP}{AD}$
+4. **代入** $D$ 的表达式并化简
+
+蝴蝶三角形的性质（相等的比例传递）对外部点同样适用——证明过程完全一致。
+
+::: {.callout-important}
+## 核心要点：相等比例的传递
+
+如果 $\frac{a}{b} = \frac{c}{d}$，则对**任意**常数 $\alpha, \beta$：
+
+$$\frac{a}{b} = \frac{c}{d} = \frac{a - c}{b - d} = \frac{a + c}{b + d} = \frac{\alpha a + \beta c}{\alpha b + \beta d}$$
+
+设公比为 $r$，写 $a = br$ 和 $c = dr$，然后从任意线性组合中提取公因子 $r$。
+
+这就是蝴蝶三角形比例成立的原因：所有子三角形对只是同一底边比的不同线性组合。
+:::
+
+## 速查表
+
+::: {.key-formula}
+| 你想求什么 | 怎么做 |
+|---|---|
+| 相似图形的面积比 | (线性比)$^2$ |
+| 相似图形的体积比 | (线性比)$^3$ |
+| 有符号梯形面积 | 当上底为"负"时，$\frac{1}{2}(b - a)h$ |
+| 交叉梯形的无符号面积 | $\frac{a^2 + b^2}{2(a+b)} \cdot h$ |
+| 外部重心坐标 | 公式相同；当 $P$ 在第 $i$ 条边远端时 $S_i < 0$ |
+| 相等比例传递 | $\frac{a}{b} = \frac{c}{d} \Rightarrow \frac{\alpha a + \beta c}{\alpha b + \beta d}$ 为同一比值 |
+
+### 缩放定律
+
+$$\text{长度} \times k, \quad \text{面积} \times k^2, \quad \text{体积} \times k^3$$
+:::

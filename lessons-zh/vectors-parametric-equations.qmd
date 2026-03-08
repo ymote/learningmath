@@ -1,0 +1,153 @@
+---
+title: "向量与参数方程"
+date: 2026-02-10
+---
+
+::: {.callout-tip collapse="true"}
+## 现实应用：GPS与线性组合
+
+你手机的GPS无时无刻不在使用线性组合！在计算你的位置时，它接收来自多颗卫星的信号，并以不同的权重将它们组合起来，从而精确定位你的位置。
+
+在动画和游戏中，角色之所以能流畅移动，是因为它们的位置是通过关键帧位置的加权组合来计算的——这正是我们今天要学习的内容！
+
+这个概念（线性组合）也是**机器学习**和**人工智能**的基础。神经网络本质上就是非常复杂的线性组合！
+:::
+
+## 本课内容
+
+- 线段的三等分点
+- 加权平均作为线性组合
+- 向量记号：$\vec{AP} = \lambda \cdot \vec{AB}$
+- 直线的参数方程
+- 推广到三维空间
+
+::: {.callout-note collapse="true"}
+## 什么是加权平均？
+
+普通平均对所有值一视同仁：
+$$\text{3和9的平均值} = \frac{3 + 9}{2} = 6$$
+
+**加权**平均则赋予某一侧更大的重要性：
+
+- "从3到9的75%处" = $0.25 \times 3 + 0.75 \times 9 = 7.5$
+- "从3到9的33%处" = $0.67 \times 3 + 0.33 \times 9 = 5.0$
+
+权重之和总是等于1（100%）。这对坐标同样适用！
+:::
+
+## 课程视频
+
+```{=html}
+<video controls width="100%" preload="metadata">
+  <source src="https://github.com/ymote/learningmath/releases/download/v1.0/2026-02-10_vectors-parametric-equations.mp4" type="video/mp4">
+</video>
+```
+
+## 课程关键帧
+
+![t = 07:30](../images/2026-02-10/frame_01_07m30s.jpg)
+
+![t = 20:00](../images/2026-02-10/frame_02_20m00s.jpg)
+
+![t = 54:00](../images/2026-02-10/frame_03_54m00s.jpg)
+
+![t = 58:30](../images/2026-02-10/frame_04_58m30s.jpg)
+
+## 点的线性组合表示
+
+给定端点 $A$ 和 $B$，直线 $AB$ 上的任意点 $P$ 可以写成：
+
+$$P = \lambda B + (1 - \lambda) A$$
+
+可以把 $\lambda$ 想象成从 $A$ 到 $B$ 的一个**进度条**。
+
+- $\lambda = 0$：在点 $A$ 处
+- $\lambda = 1$：在点 $B$ 处
+- $0 < \lambda < 1$：在 $A$ 和 $B$ 之间
+- $\lambda < 0$ 或 $\lambda > 1$：在线段 $AB$ 的**外部**
+
+## 示例 1：求三等分点
+
+**已知：** $A = (3, 11)$，$B = (9, 4)$
+
+**三等分点 $T_1$**（靠近 $A$，$\lambda = 1/3$）：
+$$T_1 = \frac{2}{3}A + \frac{1}{3}B = (5, \tfrac{26}{3})$$
+
+**三等分点 $T_2$**（靠近 $B$，$\lambda = 2/3$）：
+$$T_2 = \frac{1}{3}A + \frac{2}{3}B = (7, \tfrac{19}{3})$$
+
+> **规则：** 越靠近某个点 → 给该点分配**更大**的权重
+
+**拖动 $\lambda$ 使点沿直线移动：**
+
+```{=html}
+<div id="calc1" class="desmos-container"></div>
+<script src="https://www.desmos.com/api/v1.9/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6"></script>
+<script>
+  var calc1 = Desmos.GraphingCalculator(document.getElementById('calc1'), {
+    expressions: true,
+    settingsMenu: false
+  });
+  calc1.setExpression({ id: 'lam', latex: '\\lambda=0.5', sliderBounds: {min: -0.5, max: 1.5, step: 0.01} });
+  calc1.setExpression({ id: 'Ax', latex: 'a_x=3' }); calc1.setExpression({ id: 'Ay', latex: 'a_y=11' });
+  calc1.setExpression({ id: 'Bx', latex: 'b_x=9' }); calc1.setExpression({ id: 'By', latex: 'b_y=4' });
+  calc1.setExpression({ id: 'Px', latex: 'p_x=(1-\\lambda)a_x+\\lambda b_x' });
+  calc1.setExpression({ id: 'Py', latex: 'p_y=(1-\\lambda)a_y+\\lambda b_y' });
+  calc1.setExpression({ id: 'line', latex: '((1-t)a_x+t\\cdot b_x, (1-t)a_y+t\\cdot b_y)', color: '#bbbbbb', parametricDomain: {min: -0.5, max: 1.5} });
+  calc1.setExpression({ id: 'A', latex: '(a_x, a_y)', color: '#c74440', pointSize: 12, label: 'A(3,11)', showLabel: true });
+  calc1.setExpression({ id: 'B', latex: '(b_x, b_y)', color: '#2d70b3', pointSize: 12, label: 'B(9,4)', showLabel: true });
+  calc1.setExpression({ id: 'P', latex: '(p_x, p_y)', color: '#388c46', pointSize: 14, label: 'P', showLabel: true });
+  calc1.setMathBounds({ left: 0, right: 12, bottom: 2, top: 14 });
+</script>
+```
+
+::: {.callout-note collapse="true"}
+## 术语：参数方程
+
+与其用 $x$ 表示 $y$（如 $y = 2x + 1$），我们用第三个变量 $\lambda$（"参数"）来同时表示 $x$ 和 $y$：
+
+$$x = x_A + \lambda(x_B - x_A), \quad y = y_A + \lambda(y_B - y_A)$$
+
+可以把 $\lambda$ 想象成**时间**。当时间从0变化到1时，点就从 $A$ 移动到 $B$。
+
+**为什么这很有用？** 因为它在任意维度都适用！斜率公式只在二维中有效，而参数方程在二维、三维、四维或任意维度都有效。
+:::
+
+## 参数方程
+
+通过 $A(x_A, y_A)$ 和 $B(x_B, y_B)$ 的直线的参数形式：
+
+$$\begin{cases} x = x_A + \lambda(x_B - x_A) \\ y = y_A + \lambda(y_B - y_A) \end{cases}$$
+
+消去 $\lambda$ 可以得到我们熟悉的斜截式：
+
+$$\frac{y - y_A}{x - x_A} = \frac{y_B - y_A}{x_B - x_A} = m \text{ (斜率)}$$
+
+### 推广到三维空间
+
+只需加一个 $z$ 方程——**不需要斜率！**
+
+$$\begin{cases} x = x_A + \lambda(x_B - x_A) \\ y = y_A + \lambda(y_B - y_A) \\ z = z_A + \lambda(z_B - z_A) \end{cases}$$
+
+## 外部点
+
+**已知：** $A = (3, 11)$，$B = (9, 4)$，点 $Q$ 在 $AB$ 外部、$A$ 一侧，且 $|AQ| = \frac{1}{3}|AB|$
+
+$$\vec{AQ} = -\frac{1}{3}\vec{AB}$$
+（负号是因为 $Q$ 在 $B$ 的反方向）
+
+$$Q = A - \frac{1}{3}(B - A) = (1, \tfrac{40}{3})$$
+
+## 速查表
+
+::: {.key-formula}
+| 概念 | 公式 |
+|---|---|
+| 点的加权平均 | $P = (1-\lambda)A + \lambda B$ |
+| 中点（$\lambda = 1/2$） | $M = \frac{1}{2}(A + B)$ |
+| 靠近 $A$ 的三等分点（$\lambda = 1/3$） | $T = \frac{2}{3}A + \frac{1}{3}B$ |
+| 内部点 | $0 < \lambda < 1$ |
+| 外部点 | $\lambda < 0$ 或 $\lambda > 1$ |
+
+**记住：** 权重越靠近某个点，意味着你赋予该点更大的权重。就像拔河一样：拉力更大的一方获胜！
+:::
